@@ -1,0 +1,6 @@
+dist
+*.json
+coverage
+src/assets
+.snyk
+docs

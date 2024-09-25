@@ -1,0 +1,50 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ai-assistant": {
+      "projectType": "library",
+      "root": "projects/ai-assistant",
+      "sourceRoot": "projects/ai-assistant/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ai-assistant/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ai-assistant/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ai-assistant/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ai-assistant/src/test.ts",
+            "tsConfig": "projects/ai-assistant/tsconfig.spec.json",
+            "karmaConfig": "projects/ai-assistant/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ai-assistant/**/*.ts",
+              "projects/ai-assistant/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
