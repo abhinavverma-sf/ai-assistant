@@ -1,0 +1,29 @@
+<div class="co-pilot-container" fxLayout="column">
+  <rpms-co-pilot-header
+    (closeDialog)="onClose()"
+    (resetChatEmit)="resetChat()"
+  ></rpms-co-pilot-header>
+
+  <div class="co-pilot">
+    <div>
+      <div *ngIf="showDeepChatComp">
+        <deep-chat
+          id="deep-chat"
+          #chatElementRef
+          [messageStyles]="messageStyles"
+          [textInput]="textInput"
+          [initialMessages]="initialMessages"
+          [chatStyle]="chatStyle"
+          [attr.automation-id]="'deep-chat-co-pilot'"
+          [submitButtonStyles]="submitButtonStyles"
+          [request]="requestProp"
+          stream="true"
+        >
+          <rpms-co-pilot-intro-panel
+            (sendMessage)="appendMessageFromIntro($event)"
+          ></rpms-co-pilot-intro-panel>
+        </deep-chat>
+      </div>
+    </div>
+  </div>
+</div>

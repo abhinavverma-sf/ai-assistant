@@ -1,0 +1,24 @@
+<div class="co-pilot-image-container">
+  <div
+    class="co-pilot-image-shimmer"
+    [id]="'co-pilot-image-shimmer-' + filekey"
+    [style.display]="isImageLoading ? 'flex' : 'none'"
+  ></div>
+  <div [style.display]="!isImageLoading ? 'flex' : 'none'">
+    <img
+      class="co-pilot-image-hover"
+      crossorigin="anonymous | use-credentials"
+      [src]="safeUrl"
+      [alt]="filekey"
+      height="auto"
+      width="100%"
+      (load)="imageLoaded()"
+    />
+    <button
+      class="co-pilot-preview-button"
+      (click)="openDialog(numquestion, imagecounter)"
+    >
+      <span class="icomoon Eye-Outline"></span>{{ 'seePreviewLbl' | translate }}
+    </button>
+  </div>
+</div>

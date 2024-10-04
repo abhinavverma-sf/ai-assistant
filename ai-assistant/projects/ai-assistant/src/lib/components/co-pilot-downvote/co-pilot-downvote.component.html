@@ -1,0 +1,74 @@
+<div class="co-pilot-downvote-container" #downvoteContainer tabindex="-1">
+  <div class="co-pilot-downvote-header">
+    <span class="co-pilot-downvote-header-title"
+      >{{ localisedStrings['provideAdditionalFeedbackLbl'] }}
+    </span>
+    <span class="cursor-pointer icomoon close" (click)="closeTooltip()"></span>
+  </div>
+  <div class="co-pilot-downvote-options-list">
+    <mat-chip-list class="first-row">
+      <mat-chip
+        class="cursor-pointer co-pilot-downvote-chip"
+        *ngFor="let opt of firstRowButtons"
+        selectable="true"
+        (click)="selectOption(opt)"
+        [disabled]="loading"
+        [ngClass]="{'selected-chip': reason === opt.value}"
+      >
+        <span class="co-pilot-downvote-value-text">{{ opt.value }}</span>
+      </mat-chip>
+    </mat-chip-list>
+    <mat-chip-list class="second-row">
+      <mat-chip
+        class="cursor-pointer co-pilot-downvote-chip"
+        *ngFor="let opt of secondRowButtons"
+        selectable="true"
+        (click)="selectOption(opt)"
+        [disabled]="loading"
+        [ngClass]="{'selected-chip': reason === opt.value}"
+      >
+        <span class="co-pilot-downvote-value-text"> {{ opt.value }}</span>
+      </mat-chip>
+    </mat-chip-list>
+    <mat-chip-list class="third-row">
+      <mat-chip
+        class="cursor-pointer co-pilot-downvote-chip"
+        *ngFor="let opt of thirdRowButtons"
+        selectable="true"
+        (click)="selectOption(opt)"
+        [disabled]="loading"
+        [ngClass]="{'selected-chip': reason === opt.value}"
+      >
+        <span class="co-pilot-downvote-value-text"> {{ opt.value }}</span>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+  <div class="co-pilot-donwvote-textarea-container">
+    <div class="co-pilot-downvote-textarea" [formGroup]="form">
+      <input
+        class="co-pilot-downvote-textarea-input"
+        type="text"
+        formControlName="customReason"
+        [placeholder]="localisedStrings['downvoteOptionalLbl']"
+        [maxlength]="250"
+        #downvoteInput
+      />
+    </div>
+    <div *ngIf="form.get('customReason').value?.length === 250">
+      <span class="co-pilot-error-message">{{
+        localisedStrings['downvoteMaxLengthErrLbl']
+      }}</span>
+    </div>
+  </div>
+
+  <div class="co-pilot-downvote-submit">
+    <button
+      class="co-pilot-downvote-submit-btn"
+      type="button"
+      (click)="handleSubmit()"
+      [disabled]="handleDisabled()"
+    >
+      {{ localisedStrings['submitBtnText'] }}
+    </button>
+  </div>
+</div>

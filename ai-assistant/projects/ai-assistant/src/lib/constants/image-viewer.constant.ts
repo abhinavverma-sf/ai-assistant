@@ -1,0 +1,2 @@
+export const TOP_BOTTOM_MARGIN_TOTAL = 175;
+export const LEFT_RIGHT_MARGIN_TOTAL = 420;

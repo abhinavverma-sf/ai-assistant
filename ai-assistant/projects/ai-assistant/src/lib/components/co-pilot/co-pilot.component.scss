@@ -1,0 +1,198 @@
+@import '../../../assets/styles/variables.scss';
+
+.co-pilot-container {
+  width: $hw-576;
+
+  .white {
+    color: $gray-10;
+  }
+
+  .recommendation-container {
+    padding: $mp-16;
+    .recommendations {
+      height: $hw-20;
+      .recommendations-text {
+        font-weight: $font-wt-600;
+        font-size: $font-14;
+        line-height: $line-height-20;
+        color: $gray-800;
+      }
+    }
+    .recommendation-buttons {
+      .recommendation-chips {
+        background-color: $gray-10 !important;
+      }
+      .recommendation-chips:hover {
+        background-color: $gray-700 !important;
+        color: $gray-10 !important;
+      }
+    }
+    .recommendation-card-list {
+      border: 1px solid $gray-100;
+      .recommendation-card {
+        padding: $mp-12 $mp-16;
+        height: $hw-44;
+        border: 1px solid $gray-100;
+        border-radius: $border-radius-4 $border-radius-4 0px 0px;
+        gap: $mp-16;
+
+        .icommon {
+          padding-bottom: $mp-8;
+        }
+
+        .recommendation-card-message {
+          font-weight: $font-wt-md;
+          font-size: $font-13;
+          line-height: $line-height-18;
+          color: $gray-800;
+        }
+      }
+    }
+  }
+
+  .co-pilot-chat-area-container {
+    max-height: 73vh;
+    padding: $mp-16;
+    overflow: auto;
+    min-height: 40vh;
+
+    .co-pilot-chat-message-user-container {
+      .project-item {
+        cursor: pointer;
+        padding: $mp-10;
+        margin: $mp-5;
+        border: $border-1-exact solid $res-gray-200;
+        border-radius: $border-radius-5;
+        display: inline-block;
+      }
+
+      .co-pilot-chat-message {
+        background-color: $gray-100;
+        border-radius: $mp-12 $mp-0 $mp-12 $mp-12;
+        padding: $mp-16 $mp-12;
+        width: 75%;
+
+        .co-pilot-chat-message-text {
+          color: $gray-900;
+          font-size: $font-13;
+          line-height: $line-height-18;
+        }
+      }
+
+      .co-pilot-chat-time {
+        height: $hw-14;
+        .co-pilot-time {
+          font-size: $font-10;
+          line-height: $line-height-16;
+          text-align: right;
+          color: $gray-500;
+        }
+      }
+
+      .co-pilot-system-container {
+        padding-left: $mp-32;
+        padding-right: $mp-32;
+        .co-pilot-system-response-heading {
+          height: $hw-48;
+          .co-pilot-system-response-heading-text {
+            font-weight: $font-wt-600;
+            font-size: $font-14;
+            line-height: $line-height-20;
+            color: $gray-800;
+          }
+        }
+
+        .co-pilot-system-response-details-container {
+          .co-pilot-system-resposne-health-title {
+            font-weight: $font-wt-md;
+            font-size: $font-13;
+            line-height: $line-height-18;
+            color: $gray-800;
+          }
+
+          .co-pilot-system-response-health-status {
+            width: max-content;
+            .icomoon {
+              padding-left: $mp-6;
+            }
+            .health-text {
+              padding-right: $mp-6;
+              padding-top: $mp-2;
+              font-weight: $font-wt-800;
+            }
+          }
+
+          .co-pilot-workstream-health-individual-container {
+            .co-pilot-workstream-health-individual-title {
+              font-weight: $font-wt-md;
+              font-size: $font-13;
+              line-height: $line-height-18;
+              color: $gray-800;
+              margin-bottom: $mp-16;
+            }
+            .co-pilot-workstream-health-individual {
+              .co-pilot-workstream-health-individual-text {
+                font-size: $font-13;
+                line-height: $hw-23;
+                color: $gray-800;
+                .co-pilot-workstream-health-individual-pending {
+                  font-weight: $font-wt-600;
+                  font-size: $font-13;
+                  line-height: $hw-23;
+                  color: $gray-800;
+                }
+
+                .co-pilot-workstream-health-individual-delayed {
+                  font-weight: $font-wt-600;
+                  font-size: $font-13;
+                  line-height: $hw-23;
+                  color: $gray-800;
+                }
+              }
+            }
+          }
+
+          .co-pilot-workstream-critical-container {
+            .co-pilot-workstream-critical-title {
+              font-weight: $font-wt-md;
+              font-size: $font-13;
+              line-height: $line-height-18;
+              color: $gray-800;
+              margin-bottom: $mp-16;
+            }
+
+            .co-pilot-workstream-critical-individual {
+              .co-pilot-workstream-health-individual-text {
+                font-size: $font-13;
+                line-height: $hw-23;
+                color: $gray-800;
+              }
+            }
+          }
+
+          .co-pilot-suggestions-container {
+            .co-pilot-suggestions-title {
+              font-weight: $font-wt-md;
+              font-size: $font-13;
+              line-height: $line-height-18;
+              color: $gray-800;
+              margin-bottom: $mp-16;
+            }
+            .co-pilot-suggestions-individual {
+              .co-pilot-suggestions-text {
+                font-size: $font-13;
+                line-height: $hw-23;
+                color: $gray-800;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .co-pilot-progress-bar {
+      width: 30%;
+      display: flex;
+    }
+  }
+}

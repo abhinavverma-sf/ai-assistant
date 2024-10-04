@@ -1,0 +1,40 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/icons/icomoon/style.css';
+
+.related-topic-box {
+  width: 100%;
+  margin-bottom: $mp-17;
+}
+.heading {
+  color: $gray-700;
+  font-size: $font-16;
+  font-weight: $font-wt-sm;
+  margin-bottom: $mp-10;
+  margin-top: $mp-10;
+}
+.related-topic {
+  border: $border-1-exact solid $light-gray;
+  border-radius: $border-radius-4;
+  min-height: $hw-33;
+  padding: $hw-12 $hw-16;
+  line-height: $hw-26;
+  display: flex;
+  align-items: center;
+}
+
+.related-topic-text {
+  font-weight: $font-wt-sm;
+  font-size: $font-16;
+  color: $gray-900;
+  position: relative;
+  cursor: pointer;
+  max-width: 95%;
+}
+
+.related-topic-image {
+  position: relative;
+  width: $hw-22-half;
+  height: $hw-22-half;
+  margin-right: $mp-12;
+  top: -$mp-1-25;
+}

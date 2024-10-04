@@ -1,0 +1,129 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/icons/icomoon/style.css';
+
+.co-pilot-image-viewer-container {
+  display: flex;
+  flex-direction: column;
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .white {
+    color: $gray-10;
+  }
+
+  .co-pilot-image-viewer-title-bar {
+    height: $hw-48;
+    background-color: $gray-900;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000;
+    .co-pilot-image-viewer-title-bar-left,
+    .co-pilot-image-viewer-title-bar-center,
+    .co-pilot-image-viewer-title-bar-right {
+      display: flex;
+      align-items: center;
+    }
+    .co-pilot-image-viewer-title-bar-left {
+      justify-content: flex-start;
+      .Arrow-Left {
+        transform: rotate(180deg);
+        margin-left: $mp-16;
+        margin-right: $mp-16;
+      }
+    }
+
+    .co-pilot-image-viewer-title-bar-center {
+      justify-content: center;
+      margin-right: $hw-120;
+      .Minus {
+        margin-right: $mp-16;
+      }
+      .co-pilot-zoom-percentage {
+        margin-right: $mp-16;
+      }
+    }
+
+    .co-pilot-image-viewer-title-bar-right {
+      justify-content: flex-end;
+      .Download-Outline {
+        margin-right: $mp-16;
+        font-size: $font-20;
+      }
+    }
+  }
+  .co-pilot-image-view-navigation {
+    display: flex;
+    flex-direction: row;
+
+    .circular-button {
+      width: $mp-40;
+      height: $mp-40;
+      border-radius: 50%;
+      background-color: $gray-10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &:disabled {
+        display: none;
+      }
+      .icomoon {
+        font-size: $mp-28;
+      }
+      &.left {
+        margin-left: $mp-16;
+      }
+      &.right {
+        margin-right: $mp-16;
+      }
+    }
+
+    .co-pilot-previous-area {
+      width: $mp-50;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+    .co-pilot-image-viewer-image-area {
+      margin-top: $mp-86;
+      margin-bottom: $mp-132;
+      margin-left: $mp-222;
+      margin-right: $mp-222;
+      width: calc(100% - #{$hw-100});
+      z-index: 1;
+    }
+
+    .response-image {
+      width: 100%;
+    }
+
+    .co-pilot-next-area {
+      width: $mp-50;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+  }
+}
+
+.co-pilot-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .spinner-area {
+    width: $mp-40;
+    height: $mp-40;
+    border: $border-radius-4 solid rgba(0, 0, 0, 0.1);
+    border-left-color: $gray-10;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,27 @@
+$zoom-factor: 0.8;
+
+
+$border-1: 1px * $zoom-factor;
+$border-1-25: 1.25px * $zoom-factor;
+$border-2: 2px * $zoom-factor;
+$border-2-half: 2.5px * $zoom-factor;
+$border-3: 3px * $zoom-factor;
+$border-4: 4px * $zoom-factor;
+$border-5: 5px * $zoom-factor;
+$border-1-exact: 1px;
+$border-2-exact: 2px;
+
+$border-radius: 0.615em;
+$border-radius-1-quarter: 1.25px * $zoom-factor;
+$border-radius-2-half: 2.5px * $zoom-factor;
+$border-radius-4: 4px * $zoom-factor;
+$border-radius-5: 5px * $zoom-factor;
+$border-radius-6: 6px * $zoom-factor;
+$border-radius-7-half: 7.5px * $zoom-factor;
+$border-radius-8: 8px * $zoom-factor;
+$border-radius-12: 12px * $zoom-factor;
+$border-radius-15: 15px * $zoom-factor;
+$border-radius-25: 25px * $zoom-factor;
+$border-radius-50: 50px * $zoom-factor;
+$border-radius-24: 24px * $zoom-factor;
+$border-gray: #c4c4c4;

@@ -1,0 +1,86 @@
+// shadow dom components have css encapsulated
+// deep chat uses shadow dom concept
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/icons/icomoon/style.css';
+
+.co-pilot-message-actions-container {
+  padding-top: $mp-13;
+  padding-bottom: $mp-0;
+  .icons {
+    width: $hw-16;
+    height: $hw-16;
+    color: $gray-600;
+  }
+
+  .co-pilot-message-action-buttons {
+    padding-left: $mp-20;
+
+    .Like-Outline.upvote-active {
+      color: $blue-icon !important;
+    }
+    .Like-Outline.disable-btn {
+      pointer-events: none;
+    }
+    .Like-Outline.enable-btn {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .dislike {
+      transform: rotate(180deg) scaleX(-1);
+    }
+
+    .dislike.downvote-active {
+      color: $blue-icon !important;
+    }
+    .dislike.disable-btn {
+      pointer-events: none;
+    }
+    .dislike.enable-btn {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .divider-container {
+      .vertical-divider {
+        width: $mp-0;
+        height: $hw-16;
+        display: flex;
+        border: $border-1-exact solid $gray-100;
+      }
+    }
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  width: $hw-413;
+  background: $gray-10;
+  margin-top: $mp-16;
+  z-index: 2;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  width: $mp-0;
+  height: $mp-0;
+  border-left: $mp-8 solid transparent;
+  border-right: $mp-8 solid transparent;
+  border-bottom: $mp-8 solid white;
+  transform: translateX(-50%);
+  top: -$mp-7;
+  left: $hw-388;
+}
+
+.tooltip-content {
+  padding: $mp-16;
+  border-radius: $border-radius-4;
+  box-shadow: $mp-0 $mp-3 $mp-5 -$mp-1 rgba(0, 0, 0, 0.2),
+    $mp-0 $mp-1 $mp-18 $mp-0 rgba(0, 0, 0, 0.12),
+    $mp-0 $mp-6 $mp-10 $mp-0 rgba(0, 0, 0, 0.14);
+}

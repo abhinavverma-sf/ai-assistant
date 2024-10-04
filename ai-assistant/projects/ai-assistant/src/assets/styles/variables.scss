@@ -1,0 +1,49 @@
+@import 'height-width-variable.scss';
+@import 'margin-padding-variable.scss';
+@import 'font-variable.scss';
+@import 'line-height-variable.scss';
+@import 'border-variable.scss';
+
+$gray-10: #ffffff;
+$gray-50: #f7f7f7;
+$gray-100: #ebebeb;
+$gray-200: #d1d1d1;
+$gray-300: #b6b6b6;
+$gray-400: #9c9c9c;
+$gray-500: #828282;
+$gray-600: #686868;
+$gray-700: #4d4d4d;
+$gray-800: #333333;
+$gray-900: #000000;
+
+$font-wt-300: 300;
+$font-wt-sm: 400;
+$font-wt-500: 500;
+$font-wt-600: 600;
+$font-wt-md: 700;
+$font-wt-800: 800;
+$font-wt-lg: $font-wt-md;
+
+$res-gray-200: #ebebeb;
+
+$blue-100: #ebf7fe;
+$blue-200: #ddf0ff;
+$blue-hover: #008cff;
+
+//AI
+$intro-background: #f5f7f9;
+$blue-icon: #015c9f;
+$dark-blue-icon: #0a1749;
+$blue-hover: #1343d7;
+$na-icon: #91abe0;
+$counter-backgroud-color: #015c9f;
+$multi-select-check-box: #f4efef;
+$blue-solitude-background: #e9edf2;
+$alert-tag: #006497;
+
+$rakuten-sans-ui-font: 'Rakuten Sans UI', sans-serif;
+$light-gray: $gray-50;
+
+$danger: #df0101;
+$disable-bg: #e8e8e8;
+$disable-text: #9c9c9c;

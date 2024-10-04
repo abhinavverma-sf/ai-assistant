@@ -1,0 +1,60 @@
+@import '../../../assets/styles/variables.scss';
+
+.co-pilot-header-sub-header {
+  background-color: $gray-10;
+  height: $hw-50;
+  border: $border-1-exact solid $gray-100;
+  .co-pilot-header {
+    margin: $mp-12 $mp-16 $mp-12 $mp-16;
+    .co-pilot-header-title {
+      height: $hw-24;
+      .co-pilot-header-title-text {
+        font-weight: $font-wt-md;
+        font-size: $font-18;
+        line-height: $line-height-22;
+      }
+      .powered-by-ai-container {
+        background-color: $blue-100;
+        .co-pilot-header-ai-title-powered {
+          color: $alert-tag;
+          font-size: $font-12;
+          height: $hw-16;
+          margin: $mp-4 $mp-8 $mp-4 $mp-8;
+          display: flex;
+        }
+      }
+    }
+
+    .co-pilot-header-icons {
+      height: $hw-24;
+      .v-divider {
+        background-color: $gray-10;
+        height: $hw-20;
+        margin-top: $mp-4;
+      }
+      .co-pilot-header-icon-reset {
+        .blue-icon {
+          color: $blue-icon;
+          height: $hw-24;
+        }
+        .reset-text {
+          font-size: $font-13;
+          line-height: $line-height-24;
+          font-weight: $font-wt-sm;
+          margin-bottom: $mp-6;
+        }
+        .undo-circle {
+          font-size: $font-16;
+        }
+      }
+    }
+  }
+  .co-pilot-sub-heading {
+    .co-pilot-user-name {
+      color: $gray-10;
+    }
+    .co-pilot-sub-heading-text {
+      color: $gray-200;
+    }
+  }
+}

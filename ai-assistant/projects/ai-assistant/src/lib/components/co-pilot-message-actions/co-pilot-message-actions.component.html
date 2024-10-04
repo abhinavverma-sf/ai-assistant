@@ -1,0 +1,64 @@
+<div
+  class="co-pilot-message-actions-container"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  (mouseleave)="onMouseLeave($event)"
+>
+  <div
+    class="co-pilot-message-action-buttons"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    fxLayoutGap="12.8px"
+  >
+    <span
+      class="icomoon copy-outline cursor-pointer icons"
+      (click)="copyClicked()"
+      [matTooltip]="tooltipMessage ?? 'copyResponseLbl' | translate"
+      matTooltipPosition="above"
+      #tooltip="matTooltip"
+      (keydown)="onKeyDownCopy($event)"
+    ></span>
+    <div class="divider-container">
+      <div class="vertical-divider"></div>
+    </div>
+    <span
+      class="icomoon Like-Outline cursor-pointer icons"
+      [ngClass]="{
+        'upvote-active': answerUpvoted,
+        'disable-btn': disableClick,
+        'enable-btn': !disableClick
+      }"
+      (click)="upvoteClicked()"
+      [matTooltip]="'goodResponseLbl' | translate"
+      matTooltipPosition="above"
+    ></span>
+    <span
+      #downvoteIcon
+      class="icomoon Like-Outline cursor-pointer icons dislike"
+      (click)="downvoteClicked()"
+      [ngClass]="{
+        'downvote-active': answerDownvoted,
+        'disable-btn': disableClick,
+        'enable-btn': !disableClick
+      }"
+      [matTooltip]="'badResponseLbl' | translate"
+      matTooltipPosition="above"
+    ></span>
+  </div>
+</div>
+<div
+  class="tooltip-container"
+  *ngIf="triggerDownvotePane"
+  #tooltipContainer
+  (focusout)="onFocusOut($event)"
+>
+  <div class="tooltip-arrow" #tooltipArrow></div>
+  <div class="tooltip-content">
+    <rpms-co-pilot-downvote
+      [apiInProgress]="disableClick"
+      (tooltipClosed)="closeDownvotePane()"
+      (downvoteFeedback)="handleDownvoteFeedback($event)"
+      (tooltipContainerDetails)="initTooltipContainer($event)"
+    ></rpms-co-pilot-downvote>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+
+// shadow dom components have css encapsulated
+// deep chat uses shadow dom concept
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/icons/icomoon/style.css';
+
+.co-pilot-intro-panel-container {
+  padding: $mp-16;
+  background-color: $intro-background;
+  height: 83vh;
+
+  .spin-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .co-pilot-intro-panel-message-container {
+    height: $hw-200;
+    margin-top: $mp-32;
+
+    .co-pilot-intro-panel-message-title {
+      font-family: $rakuten-sans-ui-font;
+      font-style: normal;
+      font-weight: $font-wt-md;
+      font-size: $font-20;
+      line-height: $line-height-24;
+      text-align: center;
+      color: $gray-800;
+      padding-top: $mp-20;
+      margin-bottom: $mp-16;
+    }
+
+    .co-pilot-intro-panel-subtitle {
+      font-family: $rakuten-sans-ui-font;
+      font-style: normal;
+      font-weight: $font-wt-sm;
+      font-size: $font-13;
+      line-height: $line-height-20;
+      text-align: center;
+      color: $gray-600;
+      white-space: pre-wrap;
+    }
+  }
+
+  .co-pilot-ask-heading {
+    font-family: $rakuten-sans-ui-font;
+    font-style: normal;
+    font-weight: $font-wt-sm;
+    font-size: $font-13;
+    line-height: $line-height-20;
+    color: $gray-600;
+  }
+
+  .co-pilot-intro-suggestions {
+    padding: $mp-12 $mp-16;
+    gap: $mp-16;
+    background: $gray-10;
+    border: 1px solid $light-gray;
+
+    .question-text {
+      font-family: $rakuten-sans-ui-font;
+      font-style: normal;
+
+      font-weight: $font-wt-sm;
+      font-size: $font-13;
+      line-height: $line-height-20;
+      color: $gray-800;
+    }
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+}

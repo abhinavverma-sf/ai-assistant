@@ -1,0 +1,156 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/icons/icomoon/style.css';
+
+.co-pilot-downvote-container {
+  display: flex;
+  flex-direction: column;
+
+  .co-pilot-downvote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $hw-22;
+    padding: $mp-0;
+    gap: $mp-10;
+    margin-bottom: $mp-16;
+    .co-pilot-downvote-header-title {
+      font-weight: $font-wt-600;
+      font-size: $font-16;
+      line-height: $hw-22;
+      color: $gray-900;
+    }
+    .close {
+      width: $hw-20;
+      height: $hw-20;
+      color: $gray-600;
+      font-size: $font-20;
+    }
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+  .co-pilot-downvote-options-list {
+    display: flex;
+    flex-direction: column;
+    .first-row,
+    .second-row {
+      margin-bottom: $mp-8;
+      display: flex;
+      flex-direction: row;
+    }
+    .third-row {
+      margin-bottom: $mp-16;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .co-pilot-downvote-chip {
+      background: $gray-10;
+      border: 1px solid $dark-blue-icon;
+      border-radius: $border-radius-4;
+      min-height: $hw-24 !important;
+      max-height: $hw-24 !important;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: $mp-4 $mp-8;
+      gap: $hw-10;
+
+      &:hover {
+        background-color: $blue-hover;
+        .co-pilot-downvote-value-text {
+          color: $gray-10;
+        }
+      }
+
+      &.selected-chip {
+        background-color: $blue-icon;
+        .co-pilot-downvote-value-text {
+          color: $gray-10;
+        }
+      }
+
+      .co-pilot-downvote-value-text {
+        height: $hw-16;
+        font-weight: $font-wt-sm;
+        font-size: $font-12;
+        line-height: $line-height-16;
+        text-align: center;
+        color: $dark-blue-icon;
+
+        &:hover {
+          color: $gray-10;
+        }
+      }
+    }
+  }
+  .co-pilot-donwvote-textarea-container {
+    min-height: $hw-60;
+    display: flex;
+    flex-direction: column;
+    .co-pilot-downvote-textarea {
+      display: flex;
+      background: $gray-10;
+      border: $border-1-exact solid $gray-400;
+      border-radius: $border-radius-4;
+      padding: $mp-10 $mp-12;
+
+      .co-pilot-downvote-textarea-input {
+        height: 100%;
+        width: 100%;
+        border: none;
+        font-weight: $font-wt-sm;
+        font-size: $font-13;
+        line-height: $line-height-18;
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+
+    .co-pilot-error-message {
+      color: $danger;
+      font-size: $font-12;
+    }
+  }
+
+  .co-pilot-downvote-submit {
+    margin-bottom: $mp-16;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .co-pilot-downvote-submit-btn {
+      width: $hw-80;
+      height: $hw-32;
+      gap: $mp-8;
+      background: $dark-blue-icon;
+      color: $gray-10;
+      font-weight: $font-wt-600;
+      line-height: $hw-20;
+      font-size: $font-14;
+      border-radius: $border-radius-4;
+      cursor: pointer;
+
+      &:disabled {
+        background: $disable-bg;
+        color: $disable-text;
+        cursor: default;
+        border: none;
+        &:hover {
+          background: $disable-bg;
+          color: $disable-text;
+          cursor: default;
+          border: none;
+        }
+      }
+      &:hover {
+        background: $blue-hover;
+        color: $gray-10;
+        border: $border-1-exact solid $blue-hover;
+      }
+    }
+  }
+}

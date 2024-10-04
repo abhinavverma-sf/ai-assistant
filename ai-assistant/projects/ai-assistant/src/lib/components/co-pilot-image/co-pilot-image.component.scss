@@ -1,0 +1,69 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/icons/icomoon/style.css';
+
+.co-pilot-image-container {
+  position: relative;
+  display: inline-block;
+
+  .co-pilot-image-shimmer {
+    position: relative;
+    overflow: hidden;
+    background-color: #e2e2e2;
+    width: $mp-375;
+    height: $mp-187;
+  }
+
+  .co-pilot-image-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      #ecebeb 50%,
+      transparent 100%
+    );
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  @keyframes shimmer {
+    100% {
+      left: 100%;
+    }
+  }
+
+  .co-pilot-preview-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: $mp-10 $mp-8;
+    border-radius: $border-radius-4;
+    line-height: $line-height-16;
+    cursor: pointer;
+    width: $hw-124;
+    height: $hw-36;
+    transition: opacity 0.3s ease;
+    font-size: $font-13;
+    display: none;
+
+    .Eye-Outline {
+      margin-right: $mp-8;
+    }
+  }
+
+  &:hover {
+    .co-pilot-image-hover {
+      filter: brightness(70%) saturate(70%);
+    }
+    .co-pilot-preview-button {
+      display: flex;
+    }
+  }
+}

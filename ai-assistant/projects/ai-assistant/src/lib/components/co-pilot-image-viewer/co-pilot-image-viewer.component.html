@@ -1,0 +1,76 @@
+<div class="co-pilot-image-viewer-container">
+  <div class="co-pilot-image-viewer-title-bar">
+    <div class="co-pilot-image-viewer-title-bar-left">
+      <span
+        class="icomoon Arrow-Left white cursor-pointer"
+        (click)="goBack()"
+        [attr.automation-id]="'co-pilot-image-viewer-back-btn'"
+      ></span>
+      <span class="co-pilot-image-title white">{{ currentFileKey }}</span>
+    </div>
+    <div class="co-pilot-image-viewer-title-bar-center">
+      <span
+        class="icomoon Minus white cursor-pointer"
+        (click)="zoomOut()"
+        [style.cursor]="isLoading ? 'not-allowed' : 'pointer'"
+        [attr.automation-id]="'co-pilot-image-viewer-zoomOut-btn'"
+      ></span>
+      <span class="co-pilot-zoom-percentage white">{{ zoomPercentage }}%</span>
+      <span
+        class="icomoon Plus white cursor-pointer"
+        (click)="zoomIn()"
+        [style.cursor]="isLoading ? 'not-allowed' : 'pointer'"
+        [attr.automation-id]="'co-pilot-image-viewer-zoomIn-btn'"
+      ></span>
+    </div>
+    <div class="co-pilot-image-viewer-title-bar-right">
+      <span
+        class="icomoon Download-Outline white cursor-pointer"
+        (click)="downloadImage()"
+        [style.cursor]="isLoading ? 'not-allowed' : 'pointer'"
+        [attr.automation-id]="'co-pilot-image-viewer-downloadImg-btn'"
+      ></span>
+    </div>
+  </div>
+  <div
+    class="co-pilot-image-view-navigation"
+    [style.display]="isLoading ? 'none' : 'flex'"
+  >
+    <div class="co-pilot-previous-area">
+      <button
+        class="circular-button left cursor-pointer"
+        [disabled]="currentIndex === 0"
+        [attr.automation-id]="'co-pilot-image-viewer-prev-btn'"
+      >
+        <span class="icomoon Chevron-Left" (click)="previousImage()"></span>
+      </button>
+    </div>
+    <div class="co-pilot-image-viewer-image-area">
+      <img
+        class="response-image"
+        #imageElement
+        crossorigin="anonymous | use-credentials"
+        [src]="safeUrl"
+        [alt]="currentFileKey"
+        (load)="imageLoaded()"
+        [style.transform]="'scale(' + scale + ')'"
+        [attr.automation-id]="'co-pilot-image-viewer-img ' + currentIndex"
+      />
+    </div>
+    <div class="co-pilot-next-area">
+      <button
+        class="circular-button right cursor-pointer"
+        [disabled]="currentIndex === gallery?.length - 1"
+        [attr.automation-id]="'co-pilot-image-viewer-next-btn'"
+      >
+        <span class="icomoon Chevron-Right" (click)="nextImage()"></span>
+      </button>
+    </div>
+  </div>
+</div>
+<div
+  class="co-pilot-spinner-container"
+  [style.display]="isLoading ? 'flex' : 'none'"
+>
+  <div class="spinner-area"></div>
+</div>

@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?pzbuz9');
+  src:  url('fonts/icomoon.eot?pzbuz9#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?pzbuz9') format('truetype'),
+    url('fonts/icomoon.woff?pzbuz9') format('woff'),
+    url('fonts/icomoon.svg?pzbuz9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icomoon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Arrow-Left:before {
+  content: "\ebd0";
+}
+.Minus:before {
+  content: "\ea6e";
+}
+.Plus:before {
+  content: "\eaa3";
+}
+.Download-Outline:before {
+  content: "\e9f4";
+}
+.Chevron-Left:before {
+  content: "\e90f";
+}
+.Chevron-Right:before {
+  content: "\e908";
+}
+.insight:before {
+  content: "\e9b3";
+}
+.Like-Outline:before {
+  content: "\ea4a";
+}
+.undo-circle:before {
+  content: "\eae6";
+}
+.close:before {
+  content: "\e926";
+}
+.copy-outline:before {
+  content: "\ec6a";
+}

@@ -1,0 +1,30 @@
+<div fxLayout="column" class="co-pilot-intro-panel-container">
+  <div class="co-pilot-intro-panel-message-container" fxLayoutGap="6.4px">
+    <div class="co-pilot-intro-panel-message-title">
+      <span>{{ 'welcomeRakutenAILbl' | translate }}</span>
+    </div>
+    <div class="co-pilot-intro-panel-subtitle">
+      <span> {{ 'welcomeRakutenAISubtextLbl' | translate }} </span>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="6.4px">
+    <div class="co-pilot-ask-heading">
+      <span> {{ 'askHeadingLbl' | translate }} </span>
+    </div>
+    <div fxLayout="column">
+      <div
+        *ngFor="let panel of introQuestionPanels; let i = index"
+        fxLayout="row"
+        class="co-pilot-intro-suggestions cursor-pointer"
+        (click)="onSuggestionClick($event)"
+        [attr.automation-id]="'suggestion_' + i"
+      >
+        <span class="icomoon insight"></span>
+        <span class="question-text">{{
+          panel.translationKey | translate
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>
