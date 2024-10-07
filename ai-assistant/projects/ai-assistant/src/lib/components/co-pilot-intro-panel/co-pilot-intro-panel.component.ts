@@ -16,7 +16,7 @@ import {LocalizationPipe} from '../../pipes/localization.pipe';
     '../../../assets/icons/icomoon/style.css',
   ],
   providers: [LocalizationPipe],
-  // encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class CoPilotIntroPanelComponent {
   @Output() sendMessage = new EventEmitter();

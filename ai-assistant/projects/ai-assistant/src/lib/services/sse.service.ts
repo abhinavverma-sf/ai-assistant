@@ -1,34 +1,29 @@
 import {Injectable} from '@angular/core';
 // import {environment} from '@rao/env/environment';
 import {Observable} from 'rxjs';
-const {EventSource} = require('extended-eventsource');
+import {CustomEventSource} from 'extended-eventsource';
 // import {UserSessionStoreService} from '@rao/core/store';
 import {Qna} from '../models';
 
 @Injectable()
 export class SseService {
-  private eventSource: EventSource;
+  private eventSource: CustomEventSource;
 
   // constructor(private readonly userSessionStore: UserSessionStoreService) {}
 
   connectToSse(qna: Qna): Observable<MessageEvent> {
     return new Observable<MessageEvent>(observer => {
-      this.eventSource = new EventSource(
-        // `${environment.projectMgtApiUrl}/qna`,
-        {
-          headers: {
-            // 'X-Auth-Token': `Bearer ${this.userSessionStore.getAccessToken()}`,
-            Authorization: `Bearer ${window['keycloakService']._instance.token}`,
-            'Content-Type': 'application/json',
-          },
-          method: 'POST',
-          body: JSON.stringify({
-            prompt: qna.prompt,
-            previousQuestion: qna.previousQuestion,
-            previousResponse: qna.previousResponse,
-          }),
+      this.eventSource = new CustomEventSource(`http://localhost:4002/qna`, {
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        method: 'POST',
+        body: JSON.stringify({
+          prompt: qna.prompt,
+          previousQuestion: qna.previousQuestion,
+          previousResponse: qna.previousResponse,
+        }),
+      });
 
       this.eventSource.onmessage = event => {
         if (event.data) {

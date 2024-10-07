@@ -1,6 +1,11 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compilerOptions": {
     "paths": {
       "ai-assistant": [
@@ -29,8 +34,9 @@
     ],
     "strictPropertyInitialization": false,
     "noImplicitAny": false,
-    "strictNullChecks": false 
-
+    "strictNullChecks": false,
+    "preserveSymlinks": true,
+    
 
   },
   "angularCompilerOptions": {

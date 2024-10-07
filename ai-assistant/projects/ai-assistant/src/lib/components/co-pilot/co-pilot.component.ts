@@ -26,12 +26,17 @@ import {
   AnyObject,
   IStreamedResponse,
 } from '../../interfaces/streamed-response.interface';
-import {DeepChatCommsService, DeepChatUtilService} from '../../services';
+import {
+  DeepChatCommsService,
+  DeepChatUtilService,
+  LocalizationProviderService,
+} from '../../services';
 import {ImageStoreService} from '../../services/image-store.service';
 import {SseService} from '../../services/sse.service';
 import {ChunkData, ChunkTypes} from '../../types/chunk-response.types';
 import {Integers} from '../../enums/numbers.enum';
 import {Signals} from 'deep-chat/dist/types/handler';
+import {kk} from '../../constants/localization.constant';
 
 @Component({
   selector: 'rpms-co-pilot',
@@ -49,6 +54,7 @@ export class CoPilotComponent {
     private readonly deepChatComms: DeepChatCommsService,
     private readonly sseService: SseService,
     private readonly imageStoreSvc: ImageStoreService,
+    private readonly ll: LocalizationProviderService,
   ) {
     // this.translate = this.languageTranslateService.translate;
     this.getTranslationMessages();
@@ -114,7 +120,7 @@ export class CoPilotComponent {
     this.chatStyle = this.deepChatUtilSvc.getChatStyles();
     this.messageStyles = this.deepChatUtilSvc.getMessageStyles();
     this.textInput = this.deepChatUtilSvc.getTextInput(
-      this.localisedStrings['coPilotPlaceHolderLbl'],
+      kk.coPilotPlaceHolderLbl,
     );
     this.submitButtonStyles = this.deepChatUtilSvc.getSubmitButtonStyles();
   }
@@ -124,6 +130,7 @@ export class CoPilotComponent {
   }
 
   getTranslationMessages() {
+    this.ll.setLocalizedStrings(kk);
     // this.translate
     //   ?.get(['coPilotPlaceHolderLbl'])
     //   .pipe(take(1))
