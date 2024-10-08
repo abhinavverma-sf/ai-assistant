@@ -52,6 +52,7 @@ export class CoPilotImageComponent {
 
   createSafeUrl() {
     // write your own image download logic
+    this.isImageLoading = false;
   }
 
   imageLoaded() {

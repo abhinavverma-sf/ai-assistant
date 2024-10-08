@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {CoPilotComponent} from 'ai-assistant';
 import {environment} from '../environments/environment';
 
@@ -11,10 +11,13 @@ import {environment} from '../environments/environment';
 export class AppComponent {
   title = 'demo-sandbox';
 
+  dialogRef: MatDialogRef<CoPilotComponent>;
+
   constructor(private readonly dialog: MatDialog) {}
 
   openDialog() {
-    this.dialog.open(CoPilotComponent, {
+    this.closePreviousDialogIfOpen();
+    this.dialogRef = this.dialog.open(CoPilotComponent, {
       position: {
         top: '51.2px',
         right: '0px',
@@ -28,5 +31,13 @@ export class AppComponent {
         sseUrl: environment.sseUrl,
       },
     });
+  }
+
+  closePreviousDialogIfOpen() {
+    if (this.dialogRef?.componentInstance) {
+      // Close the previous dialog if it's open
+      this.dialogRef.close();
+      this.dialogRef = null;
+    }
   }
 }
