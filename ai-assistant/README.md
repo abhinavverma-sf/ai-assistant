@@ -2,26 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
 
-## Development server
+## Structure
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+It has a library named `ai-assistant` 
+ To build the library: `npm run build-library`
+ To pack the library for targz: `npm run pack-lib`
 
-## Code scaffolding
+It has a application named `demo-sandbox`
+Purpose: It serves as demo application to utilize the `ai-assistant` library
+`app.component.ts` and `app.component.html` contains respective integration code for `ai-assistant` library.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Run the sandbox
+from root of project reach to `demo-sandbox` and then `npm run start`. By default `http://localhost:4200` will be active
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
