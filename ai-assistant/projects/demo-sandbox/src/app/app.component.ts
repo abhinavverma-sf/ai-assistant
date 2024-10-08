@@ -15,7 +15,7 @@ export class AppComponent {
   openDialog() {
     this.dialog.open(CoPilotComponent, {
       position: {
-        top: '51.2px', // same height as nav-header
+        top: '51.2px',
         right: '0px',
       },
       minHeight: '73vh',

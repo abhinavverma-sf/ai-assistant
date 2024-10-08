@@ -2,9 +2,6 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import {Component, Input, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MatTooltip} from '@angular/material/tooltip';
-// import {TranslateService} from '@ngx-translate/core';
-// import {LanguageTranslateService} from '@rao/core/localization';
-// import {UserSessionStoreService} from '@rao/core/store';
 import {take} from 'rxjs';
 
 import {CoPilotMessageActions} from '../../constants';
@@ -31,7 +28,7 @@ import {LocalizationProviderService} from '../../services';
 })
 export class CoPilotMessageActionsComponent {
   constructor(
-    private readonly clipboard: Clipboard, // private readonly languageTranslateService: LanguageTranslateService, // private readonly toastrService: ToastrService, // private readonly deepChatFacadeSvc: DeepChatFacadeService, // private readonly storeService: UserSessionStoreService,
+    private readonly clipboard: Clipboard,
     private readonly localizationSvc: LocalizationProviderService,
   ) {}
 
@@ -65,12 +62,9 @@ export class CoPilotMessageActionsComponent {
 
   localisedStrings: {[key: string]: string} = {};
 
-  // translate: TranslateService;
-
   dialogRef: MatDialogRef<CoPilotDownvoteComponent>;
 
   ngOnInit(): void {
-    // this.translate = this.languageTranslateService.translate;
     this.getTranslationMessages();
   }
 
@@ -123,13 +117,6 @@ export class CoPilotMessageActionsComponent {
 
   getTranslationMessages() {
     this.localisedStrings = this.localizationSvc.getLocalizedStringMap();
-    // this.translate
-    //   ?.get(['copyResponseLbl', 'responseCopiedLbl', 'thanksFeedbackLbl'])
-    //   .pipe(take(1))
-    //   .subscribe(res => {
-    //     Object.assign(this.localisedStrings, res);
-    //     this.tooltipMessage = this.localisedStrings['copyResponseLbl'];
-    //   });
   }
 
   onKeyDownCopy(event: KeyboardEvent) {
@@ -197,121 +184,29 @@ export class CoPilotMessageActionsComponent {
 
   handleUpvoteAction(feedback: UserFeedback): void {
     // user implement it
-    // if (
-    //   this.currentFeedbackId &&
-    //   !this.answerUpvoted &&
-    //   !this.answerDownvoted
-    // ) {
-    //   // we can de-register response also
-    //   this.deepChatFacadeSvc.deleteFeedback(this.currentFeedbackId).subscribe({
-    //     next: () => {
-    //       this.currentFeedbackId = null;
-    //       this.disableClick = false;
-    //     },
-    //     error: () => {
-    //       this.disableClick = false;
-    //     },
-    //   });
-    // } else if (
-    //   this.currentFeedbackId &&
-    //   this.answerUpvoted &&
-    //   !this.answerDownvoted
-    // ) {
-    //   this.updateFeedbackAndCloseDownvotePane(feedback);
-    // } else {
-    //   this.saveFeedback(feedback);
-    // }
+
     this.disableClick = false;
   }
 
   handleDownvoteAction(feedback: UserFeedback): void {
     // user implement it
-    // if (
-    //   this.currentFeedbackId &&
-    //   !this.answerUpvoted &&
-    //   !this.answerDownvoted
-    // ) {
-    //   // we can de-register response also
-    //   this.deepChatFacadeSvc.deleteFeedback(this.currentFeedbackId).subscribe({
-    //     next: () => {
-    //       this.closeDownvotePane();
-    //       this.currentFeedbackId = null;
-    //       this.disableClick = false;
-    //     },
-    //     error: () => {
-    //       this.disableClick = false;
-    //     },
-    //   });
-    // } else if (
-    //   this.currentFeedbackId &&
-    //   this.answerDownvoted &&
-    //   !this.answerUpvoted
-    // ) {
-    //   this.deepChatFacadeSvc
-    //     .updateFeedback(this.currentFeedbackId, feedback)
-    //     .subscribe({
-    //       next: () => {
-    //         this.disableClick = false;
-    //       },
-    //       error: () => {
-    //         this.disableClick = false;
-    //       },
-    //     });
-    // } else {
-    //   this.saveFeedback(feedback);
-    // }
+
     this.disableClick = false;
   }
 
   handleDownvoteWithReasonAction(feedback: UserFeedback): void {
     // user implement it
-    // if (this.currentFeedbackId) {
-    //   this.deepChatFacadeSvc
-    //     .updateFeedback(this.currentFeedbackId, feedback)
-    //     .subscribe({
-    //       next: () => {
-    //         this.toastrService.success(this.localisedStrings.thanksFeedbackLbl);
-    //         this.closeDownvotePane();
-    //         this.disableClick = false;
-    //       },
-    //       error: () => {
-    //         this.disableClick = false;
-    //       },
-    //     });
-    // }
+
     this.disableClick = false;
   }
 
   updateFeedbackAndCloseDownvotePane(feedback: UserFeedback): void {
     // user implement it
-    // this.deepChatFacadeSvc
-    //   .updateFeedback(this.currentFeedbackId, {
-    //     ...feedback,
-    //     customReason: '',
-    //     reason: '' as unknown as ReasonEnum,
-    //   })
-    //   .subscribe({
-    //     next: () => {
-    //       this.closeDownvotePane();
-    //       this.disableClick = false;
-    //     },
-    //     error: () => {
-    //       this.disableClick = false;
-    //     },
-    //   });
+
     this.disableClick = false;
   }
 
   saveFeedback(feedback: UserFeedback): void {
-    // this.deepChatFacadeSvc.saveFeedBack(feedback).subscribe({
-    //   next: response => {
-    //     this.currentFeedbackId = response.id;
-    //     this.disableClick = false;
-    //   },
-    //   error: () => {
-    //     this.disableClick = false;
-    //   },
-    // });
     // user implement it
   }
 

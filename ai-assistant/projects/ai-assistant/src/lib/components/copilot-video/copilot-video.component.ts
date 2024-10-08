@@ -101,31 +101,7 @@ export class CopilotVideoComponent {
   }
 
   createSafeUrl() {
-    const url = `http://localhost:4007/files/ai/${this.videofilekey}`;
     // write your own download logic
-    // this.deepChatFacadeSvc
-    //   .downloadAIFile(this.videofilekey)
-    //   ?.pipe(take(1))
-    //   ?.subscribe({
-    //     next: blob => {
-    //       const blobUrl = window.URL.createObjectURL(blob);
-    //       this.blobUrls.push(blobUrl);
-    //       this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
-    //       this.videoElement.nativeElement.load();
-    //     },
-    //   });
-
-    // this.http.get(url, {responseType: 'blob'}).subscribe({
-    //   next: blob => {
-    //     const blobUrl = window.URL.createObjectURL(blob);
-    //     this.blobUrls.push(blobUrl);
-    //     this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
-    //     this.videoElement.nativeElement.load();
-    //   },
-    //   error: err => {
-    //     console.error('Download error:', err);
-    //   },
-    // });
   }
 
   ngOnDestroy(): void {

@@ -51,35 +51,7 @@ export class CoPilotImageComponent {
   }
 
   createSafeUrl() {
-    const url = `http://localhost:4007/files/ai/${this.filekey}`;
-
     // write your own image download logic
-
-    // this.deepChatFacadeSvc
-    //   .downloadAIFile(this.filekey)
-    //   ?.pipe(take(1))
-    //   ?.subscribe({
-    //     next: blob => {
-    //       const blobUrl = window.URL.createObjectURL(blob);
-    //       this.blobUrls.push(blobUrl);
-    //       this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
-    //     },
-    //   });
-
-    // this.http
-    //   .get(url, {responseType: 'blob'})
-    //   .pipe(take(1))
-    //   .subscribe({
-    //     next: blob => {
-    //       const blobUrl = window.URL.createObjectURL(blob);
-    //       this.blobUrls.push(blobUrl);
-    //       this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
-
-    //     },
-    //     error: err => {
-    //       console.error('Download error:', err);
-    //     },
-    //   });
   }
 
   imageLoaded() {

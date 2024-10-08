@@ -1,15 +1,11 @@
 import {Injectable} from '@angular/core';
-// import {environment} from '@rao/env/environment';
 import {Observable} from 'rxjs';
 import {CustomEventSource} from 'extended-eventsource';
-// import {UserSessionStoreService} from '@rao/core/store';
 import {Qna} from '../models';
 
 @Injectable()
 export class SseService {
   private eventSource: CustomEventSource;
-
-  // constructor(private readonly userSessionStore: UserSessionStoreService) {}
 
   connectToSse(qna: Qna, sseUrl: string): Observable<MessageEvent> {
     return new Observable<MessageEvent>(observer => {

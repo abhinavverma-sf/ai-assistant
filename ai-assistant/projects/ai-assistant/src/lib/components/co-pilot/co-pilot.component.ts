@@ -3,9 +3,6 @@ import 'deep-chat';
 
 import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-// import {TranslateService} from '@ngx-translate/core';
-// import {AuthService} from '@rao/core/auth';
-// import {LanguageTranslateService} from '@rao/core/localization';
 // import {environment} from '@rao/env/environment';
 import {MessageContent, MessageStyles} from 'deep-chat/dist/types/messages';
 import {Request} from 'deep-chat/dist/types/request';
@@ -45,19 +42,15 @@ import {translationRecord} from '../../constants/localization.constant';
   styleUrls: ['./co-pilot.component.scss'],
 })
 export class CoPilotComponent {
-  // translate: TranslateService;
   constructor(
     protected readonly dialogRef: MatDialogRef<CoPilotComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
-    // private readonly authService: AuthService,
-    // private readonly languageTranslateService: LanguageTranslateService,
     private readonly deepChatUtilSvc: DeepChatUtilService,
     private readonly deepChatComms: DeepChatCommsService,
     private readonly sseService: SseService,
     private readonly imageStoreSvc: ImageStoreService,
     private readonly localalizationSvc: LocalizationProviderService,
   ) {
-    // this.translate = this.languageTranslateService.translate;
     this.getTranslationMessages();
   }
 
@@ -133,12 +126,6 @@ export class CoPilotComponent {
 
   getTranslationMessages() {
     this.localalizationSvc.setLocalizedStrings(translationRecord);
-    // this.translate
-    //   ?.get(['coPilotPlaceHolderLbl'])
-    //   .pipe(take(1))
-    //   .subscribe(res => {
-    //     Object.assign(this.localisedStrings, res);
-    //   });
   }
 
   ngAfterViewInit(): void {
@@ -390,20 +377,14 @@ export class CoPilotComponent {
     const match = videoUrlRegex.exec(chunk);
     if (match?.[1]) {
       signals.onResponse({
-        html: `<${CoPilotVideo} videofilekey='${match[1]}'             emitVideoFileKey="emitVideoFileKey2($event)"></${CoPilotVideo}>`,
+        html: `<${CoPilotVideo} videofilekey='${match[1]}'></${CoPilotVideo}>`,
         role: CoPilotRoles.AI,
       });
     }
   }
 
-  emitVideoFileKey2() {
-    console.log('maine emit kiya');
-  }
-
   private _handleError(signals: Signals, body: AnyObject): void {
-    // this.authService.refreshToken().subscribe(() => {
-    //   this.processAndHandleSse(body, signals);
-    // });
+    this.processAndHandleSse(body, signals);
   }
 
   private _setStopListener(signals: Signals): void {

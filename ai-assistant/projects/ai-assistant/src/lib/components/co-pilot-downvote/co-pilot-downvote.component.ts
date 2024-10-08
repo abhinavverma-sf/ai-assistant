@@ -94,29 +94,6 @@ export class CoPilotDownvoteComponent {
     this.localisedStrings = this.localizationSvc.getLocalizedStringMap();
     this.loading = false;
     this.getAllButtons();
-    // this._subscriptions.push(
-    //   this.translate
-    //     .get([
-    //       'thanksFeedbackLbl',
-    //       'provideAdditionalFeedbackLbl',
-    //       'misunderstoodQuestionLbl',
-    //       'misleadingInformationLbl',
-    //       'incompleteAnswerLbl',
-    //       'offTopicResponseLbl',
-    //       'notWhatIWasLookingFor',
-    //       'notUseful',
-    //       'otherLbl',
-    //       'submitBtnText',
-    //       'downvoteOptionalLbl',
-    //       'downvoteMaxLengthErrLbl',
-    //     ])
-    //     .pipe(take(1))
-    //     .subscribe(res => {
-    //       Object.assign(this.localisedStrings, {...res});
-    //       this.loading = false;
-    //       this.getAllButtons();
-    //     }),
-    // );
   }
 
   closeTooltip() {

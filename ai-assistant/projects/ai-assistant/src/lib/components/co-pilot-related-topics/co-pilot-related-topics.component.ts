@@ -8,8 +8,6 @@ import {
 
 import {CoPilotRelatedTopics, LINK_ICON_PATH} from '../../constants';
 // import {environment} from '@rao/env/environment';
-// import {LanguageTranslateService} from '@rao/core/localization';
-// import {TranslateService} from '@ngx-translate/core';
 import {LocalizationPipe} from '../../pipes/localization.pipe';
 
 @Component({
@@ -22,15 +20,10 @@ import {LocalizationPipe} from '../../pipes/localization.pipe';
 export class CoPilotRelatedTopicsComponent {
   @ViewChild('htmlMessage') htmlMessage: ElementRef<HTMLDivElement>;
 
-  constructor() {
-    // private readonly languageTranslateService: LanguageTranslateService,
-    // this.translate = this.languageTranslateService.translate;
-  }
+  constructor() {}
 
   @Input('items')
   items: any;
-
-  // translate: TranslateService;
 
   ngAfterViewInit() {
     if (!this._isJsonString(this.items)) {

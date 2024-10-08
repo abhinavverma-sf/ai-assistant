@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {LocalizationPipe} from '../../pipes/localization.pipe';
 import {CoPilotHeader} from '../../constants';
-// import {UserSessionStoreService} from '@rao/core/store';
 
 @Component({
   selector: CoPilotHeader,
@@ -16,10 +15,6 @@ export class CoPilotHeaderComponent {
 
   @Output() openHistoryComp = new EventEmitter();
 
-  // constructor(private readonly storeService: UserSessionStoreService) {
-
-  // }
-
   onClose() {
     this.closeDialog.emit();
   }
@@ -33,7 +28,6 @@ export class CoPilotHeaderComponent {
   }
 
   onDragEnded($event) {
-    // this.storeService.setCoPilotCompDragged(true);
     sessionStorage.setItem('dragged', 'true');
   }
 }
