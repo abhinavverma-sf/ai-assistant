@@ -12,18 +12,17 @@ import {take} from 'rxjs';
 import {FeedbackOptions, ReasonEnum} from '../../enums/feedback.enum';
 import {UserFeedback} from '../../models/feedback.model';
 import {Integers} from '../../enums/numbers.enum';
+import {LocalizationProviderService} from '../../services';
+import { CoPilotDownvote } from '../../constants';
 
 @Component({
-  selector: 'rpms-co-pilot-downvote',
+  selector: CoPilotDownvote,
   templateUrl: './co-pilot-downvote.component.html',
-  styleUrls: [
-    './co-pilot-downvote.component.scss',
-    '../../../assets/icons/icomoon/style.css',
-  ],
-  // encapsulation: ViewEncapsulation.ShadowDom,
+  styleUrls: ['./co-pilot-downvote.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class CoPilotDownvoteComponent {
-  constructor() {}
+  constructor(private readonly ll: LocalizationProviderService) {}
 
   @ViewChild('downvoteContainer') downvoteContainer;
 
@@ -92,6 +91,9 @@ export class CoPilotDownvoteComponent {
   }
 
   getLocalizedStrings() {
+    this.localisedStrings = this.ll.getLocalizedStringMap();
+    this.loading = false;
+    this.getAllButtons();
     // this._subscriptions.push(
     //   this.translate
     //     .get([

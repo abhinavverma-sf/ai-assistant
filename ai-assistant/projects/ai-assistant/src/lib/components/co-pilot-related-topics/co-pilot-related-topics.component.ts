@@ -15,11 +15,8 @@ import {LocalizationPipe} from '../../pipes/localization.pipe';
 @Component({
   selector: CoPilotRelatedTopics,
   templateUrl: './co-pilot-related-topics.component.html',
-  styleUrls: [
-    './co-pilot-related-topics.component.scss',
-    '../../../assets/icons/icomoon/style.css',
-  ],
-  // encapsulation: ViewEncapsulation.ShadowDom,
+  styleUrls: ['./co-pilot-related-topics.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom,
   providers: [LocalizationPipe],
 })
 export class CoPilotRelatedTopicsComponent {

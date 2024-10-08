@@ -2,12 +2,14 @@
 // shadow dom components have css encapsulated
 // deep chat uses shadow dom concept
 @import '../../../assets/styles/variables.scss';
-@import '../../../assets/icons/icomoon/style.css';
+// @import '../../../assets/icons/icomoon/style.css';
 
 .co-pilot-intro-panel-container {
   padding: $mp-16;
   background-color: $intro-background;
   height: 83vh;
+  display: flex;
+  flex-direction: column;
 
   .spin-area {
     position: absolute;
@@ -21,6 +23,9 @@
   .co-pilot-intro-panel-message-container {
     height: $hw-200;
     margin-top: $mp-32;
+    display: flex;
+    flex-direction: column;
+    gap: 6.4px;
 
     .co-pilot-intro-panel-message-title {
       font-family: $rakuten-sans-ui-font;
@@ -60,6 +65,8 @@
     gap: $mp-16;
     background: $gray-10;
     border: 1px solid $light-gray;
+    display: flex;
+    flex-direction: row;
 
     .question-text {
       font-family: $rakuten-sans-ui-font;
@@ -74,5 +81,16 @@
 
   .cursor-pointer {
     cursor: pointer;
+  }
+
+  .question-panel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6.4px;
+
+    .question-list-container {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

@@ -26,7 +26,7 @@ import {LocalizationPipe} from '../../pipes/localization.pipe';
     '../../../assets/icons/icomoon/style.css',
   ],
   providers: [LocalizationPipe],
-  // encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class CoPilotMessageActionsComponent {
   constructor(
@@ -218,6 +218,7 @@ export class CoPilotMessageActionsComponent {
     // } else {
     //   this.saveFeedback(feedback);
     // }
+    this.disableClick = false;
   }
 
   handleDownvoteAction(feedback: UserFeedback): void {
@@ -256,6 +257,7 @@ export class CoPilotMessageActionsComponent {
     // } else {
     //   this.saveFeedback(feedback);
     // }
+    this.disableClick = false;
   }
 
   handleDownvoteWithReasonAction(feedback: UserFeedback): void {
@@ -274,6 +276,7 @@ export class CoPilotMessageActionsComponent {
     //       },
     //     });
     // }
+    this.disableClick = false;
   }
 
   updateFeedbackAndCloseDownvotePane(feedback: UserFeedback): void {
@@ -293,6 +296,7 @@ export class CoPilotMessageActionsComponent {
     //       this.disableClick = false;
     //     },
     //   });
+    this.disableClick = false;
   }
 
   saveFeedback(feedback: UserFeedback): void {
@@ -362,10 +366,10 @@ export class CoPilotMessageActionsComponent {
   }
 
   setLeftPosition(finalLeft: number, rightDifference: number) {
-    // this.tooltipContainer.style.left =
-    //   (this.storeService.getCoPilotCompDragged()
-    //     ? -rightDifference + Integers.ThirtyThree
-    //     : finalLeft) + 'px';
+    this.tooltipContainer.style.left =
+      (sessionStorage.getItem('dragged') === 'true'
+        ? -rightDifference + Integers.ThirtyThree
+        : finalLeft) + 'px';
   }
 
   adjustLeftPosition(downvoteIconRect: DOMRect) {
@@ -387,17 +391,16 @@ export class CoPilotMessageActionsComponent {
       downvoteIconRect.top >
         tooltipContainerDimension.height + Integers.OneHundred
     ) {
-      let topVal = 0;
-      // let topVal =
-      //   downvoteIconRect.top -
-      //   tooltipContainerDimension.height -
-      //   (this.storeService.getCoPilotCompDragged()
-      //     ? finalVal
-      //     : Integers.TwentyThree);
+      let topVal =
+        downvoteIconRect.top -
+        tooltipContainerDimension.height -
+        (sessionStorage.getItem('dragged') === 'true'
+          ? finalVal
+          : Integers.TwentyThree);
       if (topVal > Integers.Zero) {
-        // if (this.storeService.getCoPilotCompDragged()) {
-        //   topVal -= Integers.Twenty;
-        // }
+        if (sessionStorage.getItem('dragged') === 'true') {
+          topVal -= Integers.Twenty;
+        }
         this.setTopPosition(topVal, tooltipContainerDimension);
       }
     } else if (
@@ -406,9 +409,9 @@ export class CoPilotMessageActionsComponent {
         tooltipContainerDimension.height + Integers.OneHundred
     ) {
       let topVal = downvoteIconRect.bottom;
-      // if (this.storeService.getCoPilotCompDragged()) {
-      //   topVal = topVal - finalVal;
-      // }
+      if (sessionStorage.getItem('dragged') === 'true') {
+        topVal = topVal - finalVal;
+      }
       this.tooltipContainer.style.top = topVal + 'px';
     } else {
       // sonar

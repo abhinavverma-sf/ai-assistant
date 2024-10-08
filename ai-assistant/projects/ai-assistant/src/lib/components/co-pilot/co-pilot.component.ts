@@ -15,6 +15,7 @@ import {TextInput} from 'deep-chat/dist/types/textInput';
 import {Subscription, take} from 'rxjs';
 
 import {
+  CoPilotBase,
   CoPilotImage,
   CoPilotMessageActions,
   CoPilotRelatedTopics,
@@ -36,10 +37,10 @@ import {SseService} from '../../services/sse.service';
 import {ChunkData, ChunkTypes} from '../../types/chunk-response.types';
 import {Integers} from '../../enums/numbers.enum';
 import {Signals} from 'deep-chat/dist/types/handler';
-import {kk} from '../../constants/localization.constant';
+import {translationRecord} from '../../constants/localization.constant';
 
 @Component({
-  selector: 'rpms-co-pilot',
+  selector: CoPilotBase,
   templateUrl: './co-pilot.component.html',
   styleUrls: ['./co-pilot.component.scss'],
 })
@@ -114,13 +115,14 @@ export class CoPilotComponent {
     this._subscriptions = [];
     this.setChatConfig();
     this.imageStoreSvc.removeMap();
+    sessionStorage.removeItem('dragged');
   }
 
   setChatConfig() {
     this.chatStyle = this.deepChatUtilSvc.getChatStyles();
     this.messageStyles = this.deepChatUtilSvc.getMessageStyles();
     this.textInput = this.deepChatUtilSvc.getTextInput(
-      kk.coPilotPlaceHolderLbl,
+      translationRecord.coPilotPlaceHolderLbl,
     );
     this.submitButtonStyles = this.deepChatUtilSvc.getSubmitButtonStyles();
   }
@@ -130,7 +132,7 @@ export class CoPilotComponent {
   }
 
   getTranslationMessages() {
-    this.ll.setLocalizedStrings(kk);
+    this.ll.setLocalizedStrings(translationRecord);
     // this.translate
     //   ?.get(['coPilotPlaceHolderLbl'])
     //   .pipe(take(1))
@@ -204,11 +206,14 @@ export class CoPilotComponent {
   }
 
   private _subscribeToSse(body: AnyObject, signals: Signals): void {
-    const sseConnectObs$ = this.sseService.connectToSse({
-      prompt: this.prompt,
-      previousQuestion: this.previousQuestion,
-      previousResponse: this.previousResponse,
-    });
+    const sseConnectObs$ = this.sseService.connectToSse(
+      {
+        prompt: this.prompt,
+        previousQuestion: this.previousQuestion,
+        previousResponse: this.previousResponse,
+      },
+      this.data.sseUrl,
+    );
     this.sseSubscription = sseConnectObs$.subscribe({
       next: event => {
         if (event) {
@@ -385,10 +390,14 @@ export class CoPilotComponent {
     const match = videoUrlRegex.exec(chunk);
     if (match?.[1]) {
       signals.onResponse({
-        html: `<${CoPilotVideo} videofilekey='${match[1]}'></${CoPilotVideo}>`,
+        html: `<${CoPilotVideo} videofilekey='${match[1]}'             emitVideoFileKey="emitVideoFileKey2($event)"></${CoPilotVideo}>`,
         role: CoPilotRoles.AI,
       });
     }
+  }
+
+  emitVideoFileKey2() {
+    console.log('maine emit kiya');
   }
 
   private _handleError(signals: Signals, body: AnyObject): void {

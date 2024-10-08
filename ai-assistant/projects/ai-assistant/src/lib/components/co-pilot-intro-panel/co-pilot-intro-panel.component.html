@@ -1,5 +1,5 @@
-<div fxLayout="column" class="co-pilot-intro-panel-container">
-  <div class="co-pilot-intro-panel-message-container" fxLayoutGap="6.4px">
+<div class="co-pilot-intro-panel-container">
+  <div class="co-pilot-intro-panel-message-container">
     <div class="co-pilot-intro-panel-message-title">
       <span>{{ 'welcomeRakutenAILbl' | translate }}</span>
     </div>
@@ -8,14 +8,13 @@
     </div>
   </div>
 
-  <div fxLayout="column" fxLayoutGap="6.4px">
+  <div class="question-panel-container">
     <div class="co-pilot-ask-heading">
       <span> {{ 'askHeadingLbl' | translate }} </span>
     </div>
-    <div fxLayout="column">
+    <div class="question-list-container">
       <div
         *ngFor="let panel of introQuestionPanels; let i = index"
-        fxLayout="row"
         class="co-pilot-intro-suggestions cursor-pointer"
         (click)="onSuggestionClick($event)"
         [attr.automation-id]="'suggestion_' + i"

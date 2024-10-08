@@ -12,6 +12,8 @@ import {CoPilotImageComponent} from './components/co-pilot-image/co-pilot-image.
 import {CopilotVideoComponent} from './components/copilot-video/copilot-video.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+
 import {MatChipsModule} from '@angular/material/chips';
 import {
   CoPilotImage,
@@ -29,6 +31,9 @@ import {CoPilotVideoService, DeepChatCommsService} from './services';
 import {SseService} from './services/sse.service';
 import {ImageStoreService} from './services/image-store.service';
 import {CoPilotImageViewerComponent} from './components/co-pilot-image-viewer/co-pilot-image-viewer.component';
+import {HttpClientModule} from '@angular/common/http';
+import {DragDropModule} from '@angular/cdk/drag-drop'; // Import DragDropModule
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,10 @@ import {CoPilotImageViewerComponent} from './components/co-pilot-image-viewer/co
     MatIconModule,
     ReactiveFormsModule,
     MatTooltipModule,
+    HttpClientModule,
+    MatButtonModule,
+    DragDropModule,
+    MatFormFieldModule,
   ],
   exports: [
     AiAssistantComponent,
@@ -75,34 +84,31 @@ import {CoPilotImageViewerComponent} from './components/co-pilot-image-viewer/co
   ],
 })
 export class AiAssistantModule {
-  constructor(private injector: Injector) {}
-
-  ngDoBootstrap() {
+  constructor(private injector: Injector) {
     const messageActionsCustomElement = createCustomElement(
       CoPilotMessageActionsComponent,
       {
-        injector: this.injector,
+        injector,
       },
     );
 
     const messageRelatedTopicsCustomElement = createCustomElement(
       CoPilotRelatedTopicsComponent,
       {
-        injector: this.injector,
+        injector,
       },
     );
 
     const streamedImageCustomElement = createCustomElement(
       CoPilotImageComponent,
       {
-        injector: this.injector,
+        injector,
       },
     );
 
     const videoCustomElement = createCustomElement(CopilotVideoComponent, {
-      injector: this.injector,
+      injector,
     });
-
     customElements.get(CoPilotMessageActions) ||
       customElements.define(CoPilotMessageActions, messageActionsCustomElement);
     customElements.get(CoPilotRelatedTopics) ||

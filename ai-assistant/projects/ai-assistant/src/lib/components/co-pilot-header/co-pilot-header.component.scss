@@ -4,10 +4,22 @@
   background-color: $gray-10;
   height: $hw-50;
   border: $border-1-exact solid $gray-100;
+  display: flex;                
+  flex-direction: column;      
+  gap: 19.2px;
+  
+  &.grabble {
+      cursor: grab;
+  }
   .co-pilot-header {
     margin: $mp-12 $mp-16 $mp-12 $mp-16;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     .co-pilot-header-title {
       height: $hw-24;
+      display: flex;
+      gap: 12.8px;
       .co-pilot-header-title-text {
         font-weight: $font-wt-md;
         font-size: $font-18;
@@ -27,6 +39,8 @@
 
     .co-pilot-header-icons {
       height: $hw-24;
+      display: flex;
+      gap: 12.8px;
       .v-divider {
         background-color: $gray-10;
         height: $hw-20;
@@ -45,6 +59,9 @@
         }
         .undo-circle {
           font-size: $font-16;
+          height: $font-16;
+          position: relative;
+          top: 2.8px;
         }
       }
     }

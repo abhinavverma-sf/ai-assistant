@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {LocalizationPipe} from '../../pipes/localization.pipe';
+import { CoPilotHeader } from '../../constants';
 // import {UserSessionStoreService} from '@rao/core/store';
 
 @Component({
-  selector: 'rpms-co-pilot-header',
+  selector: CoPilotHeader,
   templateUrl: './co-pilot-header.component.html',
   styleUrls: ['./co-pilot-header.component.scss'],
   providers: [LocalizationPipe],
@@ -33,5 +34,6 @@ export class CoPilotHeaderComponent {
 
   onDragEnded($event) {
     // this.storeService.setCoPilotCompDragged(true);
+    sessionStorage.setItem('dragged', 'true');
   }
 }

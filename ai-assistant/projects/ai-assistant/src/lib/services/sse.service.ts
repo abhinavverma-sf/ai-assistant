@@ -11,10 +11,11 @@ export class SseService {
 
   // constructor(private readonly userSessionStore: UserSessionStoreService) {}
 
-  connectToSse(qna: Qna): Observable<MessageEvent> {
+  connectToSse(qna: Qna, sseUrl: string): Observable<MessageEvent> {
     return new Observable<MessageEvent>(observer => {
-      this.eventSource = new CustomEventSource(`http://localhost:4002/qna`, {
+      this.eventSource = new CustomEventSource(sseUrl, {
         headers: {
+          /** add yout headers here */
           'Content-Type': 'application/json',
         },
         method: 'POST',

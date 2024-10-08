@@ -1,11 +1,14 @@
 // shadow dom components have css encapsulated
 // deep chat uses shadow dom concept
 @import '../../../assets/styles/variables.scss';
-@import '../../../assets/icons/icomoon/style.css';
+// @import '../../../assets/icons/icomoon/style.css';
 
 .co-pilot-message-actions-container {
   padding-top: $mp-13;
   padding-bottom: $mp-0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   .icons {
     width: $hw-16;
     height: $hw-16;
@@ -14,6 +17,11 @@
 
   .co-pilot-message-action-buttons {
     padding-left: $mp-20;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12.8px;
+    
 
     .Like-Outline.upvote-active {
       color: $blue-icon !important;

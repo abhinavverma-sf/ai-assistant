@@ -1,19 +1,13 @@
 <div
   class="co-pilot-header-sub-header grabbable"
-  fxLayout="column"
-  fxLayoutGap="19.2px"
   cdkDrag
   cdkDragRootElement=".cdk-overlay-pane"
   cdkDragBoundary=".cdk-overlay-container"
   cdkDragHandle
   (cdkDragEnded)="onDragEnded($event)"
 >
-  <div
-    class="co-pilot-header"
-    fxLayout="row"
-    fxLayoutAlign="space-between center"
-  >
-    <div fxLayout="row" fxLayoutGap="12.8px" class="co-pilot-header-title">
+  <div class="co-pilot-header">
+    <div class="co-pilot-header-title">
       <span class="co-pilot-header-title-text">{{
         'coPilotLbl' | translate
       }}</span>
@@ -23,13 +17,8 @@
         </span>
       </div>
     </div>
-    <div class="co-pilot-header-icons" fxLayout="row" fxLayoutGap="12.8px">
-      <button
-        mat-button
-        color="accent"
-        (click)="resetChat()"
-        class="co-pilot-header-icon-reset"
-      >
+    <div class="co-pilot-header-icons">
+      <span (click)="resetChat()" class="co-pilot-header-icon-reset">
         <mat-icon
           class="cursor-pointer icomoon undo-circle blue-icon"
           [attr.automation-id]="'co-pilot-header-reset'"
@@ -37,7 +26,7 @@
         <span class="blue-icon reset-text">
           {{ 'resetChatLbl' | translate }}
         </span>
-      </button>
+      </span>
       <div>
         <mat-divider class="v-divider" [vertical]="true"></mat-divider>
       </div>

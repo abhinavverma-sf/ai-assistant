@@ -2,6 +2,8 @@
 
 .co-pilot-container {
   width: $hw-576;
+  display: flex;
+  flex-direction: column;
 
   .white {
     color: $gray-10;

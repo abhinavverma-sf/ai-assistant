@@ -1,15 +1,8 @@
 <div
   class="co-pilot-message-actions-container"
-  fxLayout="row"
-  fxLayoutAlign="space-between center"
   (mouseleave)="onMouseLeave($event)"
 >
-  <div
-    class="co-pilot-message-action-buttons"
-    fxLayout="row"
-    fxLayoutAlign="start center"
-    fxLayoutGap="12.8px"
-  >
+  <div class="co-pilot-message-action-buttons">
     <span
       class="icomoon copy-outline cursor-pointer icons"
       (click)="copyClicked()"
@@ -54,11 +47,11 @@
 >
   <div class="tooltip-arrow" #tooltipArrow></div>
   <div class="tooltip-content">
-    <rpms-co-pilot-downvote
+    <ai-co-pilot-downvote
       [apiInProgress]="disableClick"
       (tooltipClosed)="closeDownvotePane()"
       (downvoteFeedback)="handleDownvoteFeedback($event)"
       (tooltipContainerDetails)="initTooltipContainer($event)"
-    ></rpms-co-pilot-downvote>
+    ></ai-co-pilot-downvote>
   </div>
 </div>

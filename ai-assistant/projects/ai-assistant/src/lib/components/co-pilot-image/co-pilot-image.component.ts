@@ -7,23 +7,22 @@ import {CoPilotImageViewerComponent} from '../co-pilot-image-viewer/co-pilot-ima
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ImageStoreService} from '../../services/image-store.service';
 import {LocalizationPipe} from '../../pipes/localization.pipe';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: CoPilotImage,
   templateUrl: './co-pilot-image.component.html',
-  styleUrls: [
-    './co-pilot-image.component.scss',
-    '../../../assets/icons/icomoon/style.css',
-  ],
+  styleUrls: ['./co-pilot-image.component.scss'],
   providers: [LocalizationPipe],
 
-  // encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class CoPilotImageComponent {
   constructor(
     private readonly sanitizer: DomSanitizer,
     private readonly dialog: MatDialog,
     private readonly imageStoreSvc: ImageStoreService,
+    private http: HttpClient,
   ) {}
 
   safeUrl;
@@ -52,7 +51,10 @@ export class CoPilotImageComponent {
   }
 
   createSafeUrl() {
+    const url = `http://localhost:4007/files/ai/${this.filekey}`;
+
     // write your own image download logic
+
     // this.deepChatFacadeSvc
     //   .downloadAIFile(this.filekey)
     //   ?.pipe(take(1))
@@ -61,6 +63,22 @@ export class CoPilotImageComponent {
     //       const blobUrl = window.URL.createObjectURL(blob);
     //       this.blobUrls.push(blobUrl);
     //       this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
+    //     },
+    //   });
+
+    // this.http
+    //   .get(url, {responseType: 'blob'})
+    //   .pipe(take(1))
+    //   .subscribe({
+    //     next: blob => {
+    //       const blobUrl = window.URL.createObjectURL(blob);
+    //       this.blobUrls.push(blobUrl);
+    //       this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
+    //       // If you have an HTML video element, you can load it here
+    //       // this.videoElement.nativeElement.load();
+    //     },
+    //     error: err => {
+    //       console.error('Download error:', err);
     //     },
     //   });
   }

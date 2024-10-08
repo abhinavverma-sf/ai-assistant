@@ -7,18 +7,16 @@ import {
 } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {
+  CoPilotImageViewer,
   LEFT_RIGHT_MARGIN_TOTAL,
   TOP_BOTTOM_MARGIN_TOTAL,
 } from '../../constants';
 import {Integers} from '../../enums/numbers.enum';
 @Component({
-  selector: 'rpms-co-pilot-image-viewer',
+  selector: CoPilotImageViewer,
   templateUrl: './co-pilot-image-viewer.component.html',
-  styleUrls: [
-    './co-pilot-image-viewer.component.scss',
-    '../../../assets/icons/icomoon/style.css',
-  ],
-  // encapsulation: ViewEncapsulation.ShadowDom,
+  styleUrls: ['./co-pilot-image-viewer.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class CoPilotImageViewerComponent {
   constructor(

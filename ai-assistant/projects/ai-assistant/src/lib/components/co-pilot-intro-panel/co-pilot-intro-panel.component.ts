@@ -7,9 +7,10 @@ import {
 } from '@angular/core';
 import {CoPilotRoles} from '../../enums';
 import {LocalizationPipe} from '../../pipes/localization.pipe';
+import { CoPilotIntroPanel } from '../../constants';
 
 @Component({
-  selector: 'rpms-co-pilot-intro-panel',
+  selector: CoPilotIntroPanel,
   templateUrl: './co-pilot-intro-panel.component.html',
   styleUrls: [
     './co-pilot-intro-panel.component.scss',

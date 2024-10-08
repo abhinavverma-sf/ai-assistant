@@ -1,8 +1,8 @@
-<div class="co-pilot-container" fxLayout="column">
-  <rpms-co-pilot-header
+<div class="co-pilot-container">
+  <ai-co-pilot-header
     (closeDialog)="onClose()"
     (resetChatEmit)="resetChat()"
-  ></rpms-co-pilot-header>
+  ></ai-co-pilot-header>
 
   <div class="co-pilot">
     <div>
@@ -19,9 +19,9 @@
           [request]="requestProp"
           stream="true"
         >
-          <rpms-co-pilot-intro-panel
+          <ai-co-pilot-intro-panel
             (sendMessage)="appendMessageFromIntro($event)"
-          ></rpms-co-pilot-intro-panel>
+          ></ai-co-pilot-intro-panel>
         </deep-chat>
       </div>
     </div>
