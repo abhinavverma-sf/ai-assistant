@@ -1,2 +1,4 @@
 # ai-assistant
-AI Assistant for how to use case
+AI Assistant
+
+It requires SSE api endpoint to function properly. Since stop feature is only supported for SSE endpoint
