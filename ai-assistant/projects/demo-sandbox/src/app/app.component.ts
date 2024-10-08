@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {CoPilotComponent} from 'ai-assistant';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent {
       disableClose: false,
 
       data: {
-        sseUrl: `http://localhost:4002/qna`,
+        sseUrl: environment.sseUrl,
       },
     });
   }
