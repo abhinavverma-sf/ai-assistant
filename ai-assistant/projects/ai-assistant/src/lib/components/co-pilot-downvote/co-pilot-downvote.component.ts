@@ -13,7 +13,7 @@ import {FeedbackOptions, ReasonEnum} from '../../enums/feedback.enum';
 import {UserFeedback} from '../../models/feedback.model';
 import {Integers} from '../../enums/numbers.enum';
 import {LocalizationProviderService} from '../../services';
-import { CoPilotDownvote } from '../../constants';
+import {CoPilotDownvote} from '../../constants';
 
 @Component({
   selector: CoPilotDownvote,
@@ -22,7 +22,7 @@ import { CoPilotDownvote } from '../../constants';
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class CoPilotDownvoteComponent {
-  constructor(private readonly ll: LocalizationProviderService) {}
+  constructor(private readonly localizationSvc: LocalizationProviderService) {}
 
   @ViewChild('downvoteContainer') downvoteContainer;
 
@@ -91,7 +91,7 @@ export class CoPilotDownvoteComponent {
   }
 
   getLocalizedStrings() {
-    this.localisedStrings = this.ll.getLocalizedStringMap();
+    this.localisedStrings = this.localizationSvc.getLocalizedStringMap();
     this.loading = false;
     this.getAllButtons();
     // this._subscriptions.push(

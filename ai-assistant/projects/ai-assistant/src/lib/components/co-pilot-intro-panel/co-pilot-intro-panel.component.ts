@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {CoPilotRoles} from '../../enums';
 import {LocalizationPipe} from '../../pipes/localization.pipe';
-import { CoPilotIntroPanel } from '../../constants';
+import {CoPilotIntroPanel} from '../../constants';
 
 @Component({
   selector: CoPilotIntroPanel,

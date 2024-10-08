@@ -17,6 +17,7 @@ import {UserFeedback} from '../../models/feedback.model';
 import {CoPilotDownvoteComponent} from '../co-pilot-downvote/co-pilot-downvote.component';
 import {Integers} from '../../enums/numbers.enum';
 import {LocalizationPipe} from '../../pipes/localization.pipe';
+import {LocalizationProviderService} from '../../services';
 
 @Component({
   selector: CoPilotMessageActions,
@@ -31,6 +32,7 @@ import {LocalizationPipe} from '../../pipes/localization.pipe';
 export class CoPilotMessageActionsComponent {
   constructor(
     private readonly clipboard: Clipboard, // private readonly languageTranslateService: LanguageTranslateService, // private readonly toastrService: ToastrService, // private readonly deepChatFacadeSvc: DeepChatFacadeService, // private readonly storeService: UserSessionStoreService,
+    private readonly localizationSvc: LocalizationProviderService,
   ) {}
 
   @Input() copy: string;
@@ -120,6 +122,7 @@ export class CoPilotMessageActionsComponent {
   }
 
   getTranslationMessages() {
+    this.localisedStrings = this.localizationSvc.getLocalizedStringMap();
     // this.translate
     //   ?.get(['copyResponseLbl', 'responseCopiedLbl', 'thanksFeedbackLbl'])
     //   .pipe(take(1))

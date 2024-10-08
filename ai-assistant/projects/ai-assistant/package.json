@@ -1,11 +1,19 @@
 {
   "name": "ai-assistant",
   "version": "0.0.1",
+  "author": {
+    "name": "Abhinav Verma",
+    "email": "abhinav.verma@sourcefuse.com"
+  },
   "peerDependencies": {
     "@angular/common": "^14.2.0",
-    "@angular/core": "^14.2.0"
+    "@angular/core": "^14.2.0",
+    "@angular/cdk": "^14.2.0",
+    "@angular/elements": "14.3.0"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "deep-chat": "^1.4.11",
+    "extended-eventsource": "^1.4.9"
   }
 }

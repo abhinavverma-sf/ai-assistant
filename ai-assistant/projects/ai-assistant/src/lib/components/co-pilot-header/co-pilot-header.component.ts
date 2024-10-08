@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {LocalizationPipe} from '../../pipes/localization.pipe';
-import { CoPilotHeader } from '../../constants';
+import {CoPilotHeader} from '../../constants';
 // import {UserSessionStoreService} from '@rao/core/store';
 
 @Component({

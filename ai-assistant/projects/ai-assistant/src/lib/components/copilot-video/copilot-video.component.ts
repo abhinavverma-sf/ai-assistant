@@ -46,7 +46,6 @@ export class CopilotVideoComponent {
 
   @ViewChild('videoElement') videoElement: ElementRef<HTMLVideoElement>;
 
-
   ngAfterViewInit(): void {
     this.createSafeUrl();
     this._addEventListener();
@@ -116,17 +115,17 @@ export class CopilotVideoComponent {
     //     },
     //   });
 
-    this.http.get(url, {responseType: 'blob'}).subscribe({
-      next: blob => {
-        const blobUrl = window.URL.createObjectURL(blob);
-        this.blobUrls.push(blobUrl);
-        this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
-        this.videoElement.nativeElement.load();
-      },
-      error: err => {
-        console.error('Download error:', err);
-      },
-    });
+    // this.http.get(url, {responseType: 'blob'}).subscribe({
+    //   next: blob => {
+    //     const blobUrl = window.URL.createObjectURL(blob);
+    //     this.blobUrls.push(blobUrl);
+    //     this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
+    //     this.videoElement.nativeElement.load();
+    //   },
+    //   error: err => {
+    //     console.error('Download error:', err);
+    //   },
+    // });
   }
 
   ngOnDestroy(): void {

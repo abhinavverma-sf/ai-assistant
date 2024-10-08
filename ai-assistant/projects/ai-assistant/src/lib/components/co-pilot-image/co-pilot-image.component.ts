@@ -74,8 +74,7 @@ export class CoPilotImageComponent {
     //       const blobUrl = window.URL.createObjectURL(blob);
     //       this.blobUrls.push(blobUrl);
     //       this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(blobUrl); // NOSONAR
-    //       // If you have an HTML video element, you can load it here
-    //       // this.videoElement.nativeElement.load();
+
     //     },
     //     error: err => {
     //       console.error('Download error:', err);

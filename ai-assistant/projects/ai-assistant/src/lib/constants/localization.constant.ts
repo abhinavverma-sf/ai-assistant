@@ -3,8 +3,8 @@ export const translationRecord = {
   poweredByAILbl: 'Powered by AI',
   resetChatLbl: 'Reset Chat',
   coPilotPlaceHolderLbl: 'E.g. How to create a table ? ',
-  welcomeRakutenAILbl: 'Welcome to Assistify',
-  welcomeRakutenAISubtextLbl:
+  welcomeAILbl: 'Welcome to Assistify',
+  welcomeAISubtextLbl:
     'Your ultimate AI-powered work assistant. \nSeek assistance by asking questions on how to use any application feature.',
   askHeadingLbl: 'Ask Assistify how to use any application feature ?',
   introPanelAIOne: 'How can I affectively manage my time?',
@@ -27,4 +27,6 @@ export const translationRecord = {
   thanksFeedbackLbl: 'Thanks for your feedback!',
   relatedTopicsLbl: 'Related Topics',
   submitBtnText: 'Submit',
+  goodResponseLbl: 'Good Response',
+  badResponseLbl: 'Bad Response',
 };

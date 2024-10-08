@@ -9,5 +9,9 @@
     "./src/assets/icons/icomoon/style.css",
     "./src/assets/icons/icomoon/fonts",
     "./src/assets/images"
+  ],
+  "allowedNonPeerDependencies": [
+    "deep-chat",
+    "extended-eventsource"
   ]
 }

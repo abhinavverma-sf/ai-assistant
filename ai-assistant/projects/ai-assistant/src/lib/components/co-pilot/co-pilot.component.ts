@@ -55,7 +55,7 @@ export class CoPilotComponent {
     private readonly deepChatComms: DeepChatCommsService,
     private readonly sseService: SseService,
     private readonly imageStoreSvc: ImageStoreService,
-    private readonly ll: LocalizationProviderService,
+    private readonly localalizationSvc: LocalizationProviderService,
   ) {
     // this.translate = this.languageTranslateService.translate;
     this.getTranslationMessages();
@@ -132,7 +132,7 @@ export class CoPilotComponent {
   }
 
   getTranslationMessages() {
-    this.ll.setLocalizedStrings(translationRecord);
+    this.localalizationSvc.setLocalizedStrings(translationRecord);
     // this.translate
     //   ?.get(['coPilotPlaceHolderLbl'])
     //   .pipe(take(1))

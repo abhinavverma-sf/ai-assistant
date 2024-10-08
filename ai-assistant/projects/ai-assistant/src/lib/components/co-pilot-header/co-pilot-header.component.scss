@@ -8,7 +8,7 @@
   flex-direction: column;      
   gap: 19.2px;
   
-  &.grabble {
+  &.grabbable {
       cursor: grab;
   }
   .co-pilot-header {
@@ -24,6 +24,7 @@
         font-weight: $font-wt-md;
         font-size: $font-18;
         line-height: $line-height-22;
+        color: black;
       }
       .powered-by-ai-container {
         background-color: $blue-100;
@@ -63,6 +64,10 @@
           position: relative;
           top: 2.8px;
         }
+      }
+
+      .co-pilot-header-icon-close {
+        color: black;
       }
     }
   }

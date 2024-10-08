@@ -1,6 +1,10 @@
 {
   "name": "ai-assistant",
   "version": "0.0.0",
+  "author": {
+    "name": "Abhinav Verma",
+    "email": "abhinav.verma@sourcefuse.com"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -32,9 +36,9 @@
     "@angular/material": "^14.2.0",
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
-    "extended-eventsource": "^1.4.9",
     "@angular/router": "^14.2.0",
     "deep-chat": "^1.4.11",
+    "extended-eventsource": "^1.4.9",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

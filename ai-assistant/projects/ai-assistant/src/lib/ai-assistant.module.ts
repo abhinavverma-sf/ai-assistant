@@ -88,26 +88,26 @@ export class AiAssistantModule {
     const messageActionsCustomElement = createCustomElement(
       CoPilotMessageActionsComponent,
       {
-        injector,
+        injector: this.injector,
       },
     );
 
     const messageRelatedTopicsCustomElement = createCustomElement(
       CoPilotRelatedTopicsComponent,
       {
-        injector,
+        injector: this.injector,
       },
     );
 
     const streamedImageCustomElement = createCustomElement(
       CoPilotImageComponent,
       {
-        injector,
+        injector: this.injector,
       },
     );
 
     const videoCustomElement = createCustomElement(CopilotVideoComponent, {
-      injector,
+      injector: this.injector,
     });
     customElements.get(CoPilotMessageActions) ||
       customElements.define(CoPilotMessageActions, messageActionsCustomElement);
