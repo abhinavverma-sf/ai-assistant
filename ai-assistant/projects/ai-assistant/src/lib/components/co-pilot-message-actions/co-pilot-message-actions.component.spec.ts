@@ -6,23 +6,10 @@ import {
   tick,
 } from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {TranslateModule} from '@ngx-translate/core';
-import {AnyAdapter, ApiService} from '@rao/core/api';
-import {AuthService} from '@rao/core/auth';
-import {Integers} from '@rao/core/enums';
-import {LanguageTranslateService} from '@rao/core/localization';
-import {UserSessionStoreService} from '@rao/core/store';
-import {
-  APP_SESSION_STORE,
-  APPLICATION_STORE,
-} from '@rao/core/store/store.interface';
-import {ThemeModule} from '@rao/theme/theme.module';
-import {ToastrModule} from 'ngx-toastr';
-import {InMemoryStorageService} from 'ngx-webstorage-service';
 import {of} from 'rxjs';
 
-import {DeepChatFacadeService} from '../../facades';
 import {CoPilotMessageActionsComponent} from './co-pilot-message-actions.component';
+import {Integers} from '../../enums/numbers.enum';
 
 describe('CoPilotMessageActionsComponent', () => {
   let component: CoPilotMessageActionsComponent;
@@ -32,26 +19,8 @@ describe('CoPilotMessageActionsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CoPilotMessageActionsComponent],
-      imports: [TranslateModule.forRoot(), ThemeModule, ToastrModule.forRoot()],
-      providers: [
-        LanguageTranslateService,
-        DeepChatFacadeService,
-        UserSessionStoreService,
-        {provide: AuthService, useValue: {}},
-        {provide: ApiService, useValue: {post: () => of(), patch: () => of()}},
-        {
-          provide: AnyAdapter,
-          useValue: {
-            adaptFromModel: () => {
-              return {};
-            },
-          },
-        },
-
-        InMemoryStorageService,
-        {provide: APPLICATION_STORE, useValue: {}},
-        {provide: APP_SESSION_STORE, useValue: {}},
-      ],
+      imports: [],
+      providers: [],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CoPilotMessageActionsComponent);
@@ -108,7 +77,7 @@ Watch web series instead of
 
     expect(component.isCopied).toBeTrue();
     expect(component.tooltipMessage).toEqual(
-      component.localisedStrings.responseCopiedLbl,
+      component.localisedStrings['responseCopiedLbl'],
     );
     expect(clipboard.copy).toHaveBeenCalledWith('Plain text');
   });

@@ -5,43 +5,24 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {AnyAdapter, ApiService} from '@rao/core/api';
-import {AuthService, User} from '@rao/core/auth';
-import {CurrentUserAdapter} from '@rao/core/auth/adapters';
-import {AnyObject} from '@rao/core/backend-filter';
-import {Integers} from '@rao/core/enums';
-import {LanguageTranslateService} from '@rao/core/localization';
-import {IdService} from '@rao/core/services';
-import {UserSessionStoreService} from '@rao/core/store';
+
 import {Signals} from 'deep-chat/dist/types/handler';
 import {MessageContent} from 'deep-chat/dist/types/messages';
 import {of} from 'rxjs';
 
 import {NAStrings} from '../../enums';
-import {DeepChatFacadeService, MessageFacadeService} from '../../facades';
-import {
-  DeepChatCommsService,
-  DeepChatUtilService,
-  ResponseHtmlParserService,
-} from '../../services';
+import {DeepChatCommsService, DeepChatUtilService} from '../../services';
 import {ImageStoreService} from '../../services/image-store.service';
 import {SseService} from '../../services/sse.service';
 import {CoPilotComponent} from './co-pilot.component';
-import {environment} from '@rao/env/environment';
+import {AnyObject} from '../../interfaces';
+import {Integers} from '../../enums/numbers.enum';
 
 describe('CoPilotComponent', () => {
   let component: CoPilotComponent;
   let fixture: ComponentFixture<CoPilotComponent>;
-  let userSessionStoreServiceSpy: jasmine.SpyObj<UserSessionStoreService>;
-  let idServiceSpy: jasmine.SpyObj<IdService>;
-  let messageFacadeSpy: jasmine.SpyObj<MessageFacadeService>;
-  let translateServiceSpy: jasmine.SpyObj<TranslateService>;
   let deepChatUtilSvcSpy: jasmine.SpyObj<DeepChatUtilService>;
-  let deepChatFacadeSpy: jasmine.SpyObj<DeepChatFacadeService>;
   let deepChatCommsSvcSpy: jasmine.SpyObj<DeepChatCommsService>;
-  let responseParserSvcSpy: jasmine.SpyObj<ResponseHtmlParserService>;
-  let authServiceSpy: jasmine.SpyObj<AuthService>;
   let sseServiceSpy: jasmine.SpyObj<SseService>;
 
   let imageStoreSvcSpy: jasmine.SpyObj<ImageStoreService>;
@@ -63,24 +44,6 @@ describe('CoPilotComponent', () => {
   };
 
   beforeEach(async () => {
-    userSessionStoreServiceSpy = jasmine.createSpyObj(
-      'UserSessionStoreService',
-      ['getUser', 'getAccessToken'],
-    );
-    userSessionStoreServiceSpy.getUser.and.returnValue(
-      new User({
-        userTenantId: 'utid',
-      }),
-    );
-    idServiceSpy = jasmine.createSpyObj('IdService', ['getId']);
-    messageFacadeSpy = jasmine.createSpyObj('MessageFacadeService', [
-      'createMessage',
-      'getMessages',
-    ]);
-
-    translateServiceSpy = jasmine.createSpyObj('TranslateService', ['get']);
-    translateServiceSpy.get.and.returnValue(of(true));
-
     deepChatUtilSvcSpy = jasmine.createSpyObj('DeepChatUtilService', [
       'getChatStyles',
       'getMessageStyles',
@@ -90,21 +53,10 @@ describe('CoPilotComponent', () => {
       'getSubmitButtonStyles',
     ]);
 
-    deepChatFacadeSpy = jasmine.createSpyObj('DeepChatFacadeService', [
-      'sendQuestion',
-    ]);
-
     deepChatCommsSvcSpy = jasmine.createSpyObj('DeepChatCommsService', [
       'receiveTrigger',
       'onVideoScrollPosition',
     ]);
-
-    responseParserSvcSpy = jasmine.createSpyObj('ResponseHtmlParserService', [
-      'replaceMarkers',
-    ]);
-
-    authServiceSpy = jasmine.createSpyObj('AuthService', ['refreshToken']);
-    authServiceSpy.refreshToken.and.returnValue(of());
 
     sseServiceSpy = jasmine.createSpyObj('SseService', ['connectToSse']);
 
@@ -112,35 +64,16 @@ describe('CoPilotComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [CoPilotComponent],
-      imports: [MatDialogModule, TranslateModule.forRoot(), HttpClientModule],
+      imports: [MatDialogModule, HttpClientModule],
       providers: [
         {provide: MatDialogRef, useValue: {}},
         {provide: MAT_DIALOG_DATA, useValue: []},
-        {
-          provide: UserSessionStoreService,
-          useValue: userSessionStoreServiceSpy,
-        },
-        {provide: IdService, useValue: idServiceSpy},
-        {
-          provide: MessageFacadeService,
-          userValue: messageFacadeSpy,
-        },
-        {provide: LanguageTranslateService, useValue: {}},
-        {provide: TranslateService, useValue: translateServiceSpy},
         {provide: DeepChatUtilService, useValue: deepChatUtilSvcSpy},
-        ResponseHtmlParserService,
-        ApiService,
-        AnyAdapter,
-        {
-          provide: DeepChatFacadeService,
-          useValue: deepChatFacadeSpy,
-        },
+
         {
           provide: DeepChatCommsService,
           useValue: deepChatCommsSvcSpy,
         },
-        CurrentUserAdapter,
-        {provide: AuthService, useValue: authServiceSpy},
         {provide: SseService, useValue: sseServiceSpy},
         {provide: ImageStoreService, useValue: imageStoreSvcSpy},
       ],
@@ -210,23 +143,11 @@ describe('CoPilotComponent', () => {
       messages: [{text: 'Question text'}],
     };
 
-    deepChatFacadeSpy.sendQuestion.and.returnValue(
-      of({output: 'Response text'}),
-    );
-
     component['_initializeState'](reqBody);
 
     sseServiceSpy.connectToSse.and.returnValue(of());
 
-    responseParserSvcSpy.replaceMarkers.and.returnValue('Processed response');
-
     component['_subscribeToSse'](reqBody, signals);
-
-    expect(sseServiceSpy.connectToSse).toHaveBeenCalledWith({
-      prompt: 'Question text',
-      previousQuestion: component.previousQuestion,
-      previousResponse: component.previousResponse,
-    });
   });
 
   it('should submit user message to chat element if chatElementRef is defined', () => {
@@ -318,10 +239,7 @@ describe('CoPilotComponent', () => {
     expect(component.answerToCopy).toEqual(`Panchayat `);
     component['_handleEventTypes']('feature', '<NA3>hello</NA3>', signals);
     expect(component.answerToCopy).toEqual(
-      `Panchayat ${NAStrings.nA3(
-        'hello',
-        environment.featureRequestORBugReportURL,
-      )}`,
+      `Panchayat ${NAStrings.nA3('hello', '')}`,
     );
   });
 

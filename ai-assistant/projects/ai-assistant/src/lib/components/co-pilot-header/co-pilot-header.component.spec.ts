@@ -1,16 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CoPilotHeaderComponent} from './co-pilot-header.component';
-import {PmsAssetResolverPipe} from 'apps/project-mgmt/src/app/initializers/pms-asset-resolver.pipe';
-import {PipesModule} from '@rao/theme/tools/pipes/pipes.module';
-import {AssetResolverService} from 'apps/project-mgmt/src/app/initializers';
-import {UserSessionStoreService} from '@rao/core/store';
-import {InMemoryStorageService} from 'ngx-webstorage-service';
-import {
-  APPLICATION_STORE,
-  APP_SESSION_STORE,
-} from '@rao/core/store/store.interface';
-import {TranslateModule} from '@ngx-translate/core';
 
 describe('CoPilotHeaderComponent', () => {
   let component: CoPilotHeaderComponent;
@@ -18,22 +8,9 @@ describe('CoPilotHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PipesModule, TranslateModule.forRoot()],
+      imports: [],
       declarations: [CoPilotHeaderComponent],
-      providers: [
-        {
-          provide: PmsAssetResolverPipe,
-          useValue: {transform: () => ''},
-        },
-        {
-          provide: AssetResolverService,
-          useValue: {getAssetsUrl: () => {}},
-        },
-        UserSessionStoreService,
-        InMemoryStorageService,
-        {provide: APPLICATION_STORE, useValue: {}},
-        {provide: APP_SESSION_STORE, useValue: {}},
-      ],
+      providers: [],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CoPilotHeaderComponent);

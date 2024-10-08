@@ -3,10 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CopilotVideoComponent} from './copilot-video.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {HttpClientModule} from '@angular/common/http';
-import {DeepChatFacadeService} from '../../facades';
-import {AnyAdapter, ApiService} from '@rao/core/api';
 import {CoPilotVideoService, DeepChatCommsService} from '../../services';
-import {TranslateModule} from '@ngx-translate/core';
 
 describe('CopilotVideoComponent', () => {
   let component: CopilotVideoComponent;
@@ -15,18 +12,8 @@ describe('CopilotVideoComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CopilotVideoComponent],
-      imports: [
-        HttpClientTestingModule,
-        HttpClientModule,
-        TranslateModule.forRoot(),
-      ],
-      providers: [
-        DeepChatFacadeService,
-        ApiService,
-        AnyAdapter,
-        DeepChatCommsService,
-        CoPilotVideoService,
-      ],
+      imports: [HttpClientTestingModule, HttpClientModule],
+      providers: [DeepChatCommsService, CoPilotVideoService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CopilotVideoComponent);

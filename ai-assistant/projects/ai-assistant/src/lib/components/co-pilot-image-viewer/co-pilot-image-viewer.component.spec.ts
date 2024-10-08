@@ -6,39 +6,23 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import {AnyAdapter, ApiService} from '@rao/core/api';
-import {Integers} from '@rao/core/enums';
-import {DownloadService} from '@rao/core/services';
-import {AssetDownloadService} from '@rao/shared/services';
 
-import {DeepChatFacadeService} from '../../facades';
 import {CoPilotImageViewerComponent} from './co-pilot-image-viewer.component';
+import {Integers} from '../../enums/numbers.enum';
 
 describe('CoPilotImageViewerComponent', () => {
   let component: CoPilotImageViewerComponent;
   let fixture: ComponentFixture<CoPilotImageViewerComponent>;
   let dialogRefSpy: jasmine.SpyObj<MatDialogRef<CoPilotImageViewerComponent>>;
-  let downloadServiceSpy: jasmine.SpyObj<DownloadService>;
-  let assetDownloadServiceSpy: jasmine.SpyObj<AssetDownloadService>;
   beforeEach(async () => {
     dialogRefSpy = jasmine.createSpyObj('MatDialogRef', ['close']);
-    downloadServiceSpy = jasmine.createSpyObj('DownloadService', [
-      'downloadByBlob',
-    ]);
-    assetDownloadServiceSpy = jasmine.createSpyObj('AssetDownloadService', [
-      'download',
-    ]);
+
     await TestBed.configureTestingModule({
       declarations: [CoPilotImageViewerComponent],
       imports: [MatDialogModule, HttpClientModule, HttpClientTestingModule],
       providers: [
         {provide: MatDialogRef, useValue: dialogRefSpy},
         {provide: MAT_DIALOG_DATA, useValue: []},
-        AssetDownloadService,
-        DownloadService,
-        ApiService,
-        AnyAdapter,
-        DeepChatFacadeService,
       ],
     }).compileComponents();
 
@@ -61,12 +45,7 @@ describe('CoPilotImageViewerComponent', () => {
       currentImageNumber: Integers.One,
     };
 
-    component = new CoPilotImageViewerComponent(
-      dialogRefSpy,
-      mockData,
-      assetDownloadServiceSpy,
-      downloadServiceSpy,
-    );
+    component = new CoPilotImageViewerComponent(dialogRefSpy, mockData);
     component.ngOnInit();
 
     expect(component.gallery).toEqual(mockData.images);

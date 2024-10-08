@@ -1,13 +1,9 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TranslateModule} from '@ngx-translate/core';
-import {LanguageTranslateService} from '@rao/core/localization';
-import {ThemeModule} from '@rao/theme/theme.module';
 
 import {CoPilotRelatedTopicsComponent} from './co-pilot-related-topics.component';
 import {By} from '@angular/platform-browser';
-import {PmsAssetResolverPipe} from 'apps/project-mgmt/src/app/initializers/pms-asset-resolver.pipe';
-import {Integers} from '@rao/core/enums';
 import {DeepChatCommsService} from '../../services';
+import {Integers} from '../../enums/numbers.enum';
 
 describe('CoPilotRelatedTopicsComponent', () => {
   let component: CoPilotRelatedTopicsComponent;
@@ -16,15 +12,8 @@ describe('CoPilotRelatedTopicsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CoPilotRelatedTopicsComponent],
-      imports: [TranslateModule.forRoot(), ThemeModule],
-      providers: [
-        LanguageTranslateService,
-        {
-          provide: PmsAssetResolverPipe,
-          useValue: {transform: () => ''},
-        },
-        DeepChatCommsService,
-      ],
+      imports: [],
+      providers: [DeepChatCommsService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CoPilotRelatedTopicsComponent);

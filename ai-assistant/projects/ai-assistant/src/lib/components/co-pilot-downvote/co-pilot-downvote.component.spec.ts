@@ -1,8 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CoPilotDownvoteComponent} from './co-pilot-downvote.component';
-import {LanguageTranslateService} from '@rao/core/localization';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 describe('CoPilotDownvoteComponent', () => {
   let component: CoPilotDownvoteComponent;
@@ -11,8 +9,8 @@ describe('CoPilotDownvoteComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [CoPilotDownvoteComponent],
-      imports: [TranslateModule.forRoot()],
-      providers: [LanguageTranslateService, TranslateService],
+      imports: [],
+      providers: [],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CoPilotDownvoteComponent);

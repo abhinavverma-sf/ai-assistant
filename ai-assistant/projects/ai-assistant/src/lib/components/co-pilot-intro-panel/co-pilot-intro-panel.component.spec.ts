@@ -1,38 +1,19 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
-import {Integers} from '@rao/core/enums';
-import {LanguageTranslateService} from '@rao/core/localization';
-import {PipesModule} from '@rao/theme/tools/pipes/pipes.module';
-import {AssetResolverService} from 'apps/project-mgmt/src/app/initializers';
-import {PmsAssetResolverPipe} from 'apps/project-mgmt/src/app/initializers/pms-asset-resolver.pipe';
 import {of} from 'rxjs';
 
 import {CoPilotRoles} from '../../enums';
 import {CoPilotIntroPanelComponent} from './co-pilot-intro-panel.component';
+import {Integers} from '../../enums/numbers.enum';
 
 describe('CoPilotIntroPanelComponent', () => {
   let component: CoPilotIntroPanelComponent;
   let fixture: ComponentFixture<CoPilotIntroPanelComponent>;
-  let translateServiceSpy: jasmine.SpyObj<TranslateService>;
 
   beforeEach(async () => {
-    translateServiceSpy = jasmine.createSpyObj('TranslateService', ['get']);
-    translateServiceSpy.get.and.returnValue(of(true));
-
     await TestBed.configureTestingModule({
       declarations: [CoPilotIntroPanelComponent],
-      imports: [TranslateModule.forRoot(), PipesModule],
-      providers: [
-        {provide: LanguageTranslateService, useValue: {}},
-        {
-          provide: PmsAssetResolverPipe,
-          useValue: {transform: () => ''},
-        },
-        {
-          provide: AssetResolverService,
-          useValue: {getAssetsUrl: () => {}},
-        },
-      ],
+      imports: [],
+      providers: [],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CoPilotIntroPanelComponent);

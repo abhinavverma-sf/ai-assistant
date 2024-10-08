@@ -6,13 +6,8 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import {AnyAdapter, ApiService} from '@rao/core/api';
-import {DownloadService} from '@rao/core/services';
-import {AssetDownloadService} from '@rao/shared/services';
 
-import {DeepChatFacadeService} from '../../facades';
 import {CoPilotImageComponent} from './co-pilot-image.component';
-import {TranslateModule} from '@ngx-translate/core';
 import {ImageStoreService} from '../../services/image-store.service';
 
 describe('CoPilotImageComponent', () => {
@@ -32,20 +27,11 @@ describe('CoPilotImageComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [CoPilotImageComponent],
-      imports: [
-        MatDialogModule,
-        HttpClientModule,
-        HttpClientTestingModule,
-        TranslateModule.forRoot(),
-      ],
+      imports: [MatDialogModule, HttpClientModule, HttpClientTestingModule],
       providers: [
         {provide: MatDialogRef, useValue: dialogRefSpy},
         {provide: MAT_DIALOG_DATA, useValue: []},
-        AssetDownloadService,
-        DownloadService,
-        ApiService,
-        AnyAdapter,
-        DeepChatFacadeService,
+
         {provide: ImageStoreService, useValue: imageStoreSvcSpy},
       ],
     }).compileComponents();
