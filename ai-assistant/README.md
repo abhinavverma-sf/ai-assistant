@@ -7,8 +7,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Go to `projects` folder <br/>
 
 It has a library named `ai-assistant` <br/>
+
  To build the library: `npm run build-library` <br/>
+
+ Now,At the root level the build will be successful at `dist/ai-assistant` <br/>
+
  To pack the library for targz: `npm run pack-lib` <br/>
+
+ Now,At the root level the targz will be successfully created at `dist/ai-assistant/ai-assistant-0.0.1.tgz` <br/>
 
 It has a application named `demo-sandbox` <br/>
 Purpose: It serves as demo application to utilize the `ai-assistant` library <br/>
@@ -23,6 +29,7 @@ In your `package.json` do,
 
 ```
 "dependencies": {
+    ...exisitng dependencies,
     "ai-assistant": "file:ai-assistant-0.0.1.tgz"
     
   },
@@ -30,6 +37,8 @@ In your `package.json` do,
 This includes pre-requisite that `tgz` is packed from `library` and exists in your project/repo
 
 Make sure the name of `tgz` file in `package.json` matches the `tgz` file in your repository
+
+Then do `npm install` it will install the library in your new project
 
 ## Structure of SSE API
 
